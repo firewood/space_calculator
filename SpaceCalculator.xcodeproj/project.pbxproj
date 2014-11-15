@@ -13,6 +13,8 @@
 		20041CB01A16606A00D390BD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20041CAF1A16606A00D390BD /* Images.xcassets */; };
 		20041CB31A16606A00D390BD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20041CB11A16606A00D390BD /* LaunchScreen.xib */; };
 		20041CBF1A16606A00D390BD /* SpaceCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20041CBE1A16606A00D390BD /* SpaceCalculatorTests.swift */; };
+		20041CC91A1665DF00D390BD /* Stage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20041CC81A1665DE00D390BD /* Stage.swift */; };
+		20041CFD1A17962F00D390BD /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = 20041CFC1A17962F00D390BD /* Spaceship.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,8 @@
 		20041CB81A16606A00D390BD /* SpaceCalculatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpaceCalculatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		20041CBD1A16606A00D390BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20041CBE1A16606A00D390BD /* SpaceCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceCalculatorTests.swift; sourceTree = "<group>"; };
+		20041CC81A1665DE00D390BD /* Stage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stage.swift; sourceTree = "<group>"; };
+		20041CFC1A17962F00D390BD /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,8 +81,10 @@
 		20041CA51A16606A00D390BD /* SpaceCalculator */ = {
 			isa = PBXGroup;
 			children = (
+				20041CFC1A17962F00D390BD /* Spaceship.png */,
 				20041CA81A16606A00D390BD /* AppDelegate.swift */,
 				20041CAA1A16606A00D390BD /* ViewController.swift */,
+				20041CC81A1665DE00D390BD /* Stage.swift */,
 				20041CAC1A16606A00D390BD /* Main.storyboard */,
 				20041CAF1A16606A00D390BD /* Images.xcassets */,
 				20041CB11A16606A00D390BD /* LaunchScreen.xib */,
@@ -192,6 +198,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20041CFD1A17962F00D390BD /* Spaceship.png in Resources */,
 				20041CAE1A16606A00D390BD /* Main.storyboard in Resources */,
 				20041CB31A16606A00D390BD /* LaunchScreen.xib in Resources */,
 				20041CB01A16606A00D390BD /* Images.xcassets in Resources */,
@@ -212,6 +219,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20041CC91A1665DF00D390BD /* Stage.swift in Sources */,
 				20041CAB1A16606A00D390BD /* ViewController.swift in Sources */,
 				20041CA91A16606A00D390BD /* AppDelegate.swift in Sources */,
 			);
@@ -337,6 +345,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SpaceCalculator/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -347,6 +356,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SpaceCalculator/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -405,6 +415,7 @@
 				20041CC41A16606A00D390BD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		20041CC51A16606A00D390BD /* Build configuration list for PBXNativeTarget "SpaceCalculatorTests" */ = {
 			isa = XCConfigurationList;
@@ -413,6 +424,7 @@
 				20041CC71A16606A00D390BD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
