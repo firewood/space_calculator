@@ -15,25 +15,48 @@ protocol CloseProtocol {
 class Stage: SKScene {
 
     var close: CloseProtocol?
-    var player: SKSpriteNode?
-
-    func setupPlayer() {
-        player = SKSpriteNode(imageNamed: "Spaceship")
-        player!.position = CGPointMake(CGRectGetMidX(self.frame), 40.0);
-        player!.setScale(0.1)
-        self.addChild(player!)
-
-    }
+    var player: Player?
+    var enemy: Enemy?
+    var isPlayerMoving: Bool = false
+    var playerMovedDistance: Float = 0
 
     override func didMoveToView(view: SKView) {
-        setupPlayer()
-
+        player = Player(stage: self)
+        enemy = Enemy(stage: self, name: "0")
     }
 
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        isPlayerMoving = false
+        playerMovedDistance = 0
 
-        close!.closeScene(self)
+        for touch: AnyObject in touches {
+            let location = touch.locationInNode(self)
+            let node:SKNode? = nodeAtPoint(location)
+            if (node? == player!) {
+                // start moving
+                isPlayerMoving = true
+            }
+        }
+    }
 
+    override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
+        if (!isPlayerMoving) {
+            return
+        }
+
+        for touch: AnyObject in touches {
+            let location = touch.locationInNode(self)
+            let diff: Float = Float(location.x - player!.position.x)
+            player!.position.x = location.x
+            playerMovedDistance += fabsf(diff)
+        }
+    }
+
+    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
+        // fire by tap
+        if (playerMovedDistance <= 4.0) {
+            player!.fire()
+        }
     }
 
 }
