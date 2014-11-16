@@ -11,10 +11,12 @@ import SpriteKit
 class Bullet: SKShapeNode {
 
     convenience init(stage: SKScene, player: SKSpriteNode) {
-        let radius:CGFloat = 3
+        let radius:CGFloat = 10.0
         self.init()
-        self.init(circleOfRadius: radius)
+        let size = CGSize(width: radius * 0.25, height: radius * 1.5)
+        self.init(ellipseOfSize: size)
         position = CGPointMake(player.position.x, 45.0);
+        fillColor = SKColor.whiteColor()
         physicsBody = SKPhysicsBody(circleOfRadius: radius)
         physicsBody?.affectedByGravity = false
         physicsBody?.velocity = CGVectorMake(0, 384)

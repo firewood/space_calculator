@@ -19,10 +19,16 @@ class Stage: SKScene {
     var enemy: Enemy?
     var isPlayerMoving: Bool = false
     var playerMovedDistance: Float = 0
+    var computation: Computation?
 
     override func didMoveToView(view: SKView) {
+        computation = Computation()
+        computation!.setup(self)
+
         player = Player(stage: self)
-        enemy = Enemy(stage: self, name: "0")
+//        enemy = DigitEnemy(stage: self, digit: 2)
+        enemy = PlusEnemy(stage: self)
+
     }
 
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
