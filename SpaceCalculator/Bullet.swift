@@ -15,7 +15,7 @@ class Bullet: SKShapeNode {
         self.init()
         let size = CGSize(width: radius * 0.25, height: radius * 1.5)
         self.init(ellipseOfSize: size)
-        position = CGPointMake(player.position.x, 45.0);
+        position = CGPointMake(player.position.x, 52.0);
         fillColor = SKColor.whiteColor()
         physicsBody = SKPhysicsBody(circleOfRadius: radius)
         physicsBody?.affectedByGravity = false
