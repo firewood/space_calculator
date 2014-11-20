@@ -10,17 +10,17 @@ import SpriteKit
 
 class Bullet: SKShapeNode {
 
-    convenience init(stage: SKScene, player: SKSpriteNode) {
-        let radius:CGFloat = 10.0
+    convenience init(radius:CGFloat) {
+        let size = CGSize(width: radius * 0.5, height: radius * 2.5)
         self.init()
-        let size = CGSize(width: radius * 0.25, height: radius * 1.5)
         self.init(ellipseOfSize: size)
-        position = CGPointMake(player.position.x, 52.0);
         fillColor = SKColor.whiteColor()
-        physicsBody = SKPhysicsBody(circleOfRadius: radius)
+        physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: radius * 0.5, height: radius * 2))
         physicsBody?.affectedByGravity = false
         physicsBody?.velocity = CGVectorMake(0, 384)
-        stage.addChild(self)
+        physicsBody!.categoryBitMask = bulletCategory
+        physicsBody!.contactTestBitMask = enemyCategory
+        physicsBody!.collisionBitMask = enemyCategory
     }
 
 }

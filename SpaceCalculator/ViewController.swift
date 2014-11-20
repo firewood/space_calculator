@@ -13,7 +13,6 @@ class ViewController: UIViewController, CloseProtocol {
 
     @IBOutlet weak var StartButton: UIButton!
     var skView: SKView?
-    var stage: Stage?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,10 +36,9 @@ class ViewController: UIViewController, CloseProtocol {
         view.addSubview(skView!)
     }
 
-    func closeScene(scene: SKScene) {
-        println("Closed")
+    func onClose() {
         skView!.removeFromSuperview()
-
+        skView = nil
     }
 
 }

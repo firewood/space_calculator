@@ -10,12 +10,13 @@ class DigitEnemy: Enemy {
 
     var digit: Int?
 
-    convenience init(stage: Stage, digit: Int) {
-        self.init()
-        Enemy.init(stage: stage, name: String(digit))
+    convenience init(digit: Int) {
+        self.init(name: String(digit))
         self.digit = digit
     }
 
-
+    override func getValue() -> String {
+        return String(digit!)
+    }
 
 }

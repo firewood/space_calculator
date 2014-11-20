@@ -10,22 +10,15 @@ import SpriteKit
 
 class Player: SKSpriteNode {
 
-    var stage: SKScene?
-    var bullet: Bullet?
-
-    convenience init(stage: SKScene) {
+    convenience override init() {
         self.init(imageNamed: "Spaceship")
-        self.stage = stage
-        position = CGPointMake(CGRectGetMidX(stage.frame), 30.0);
         setScale(0.1)
         physicsBody = SKPhysicsBody(rectangleOfSize: size)
-        physicsBody?.affectedByGravity = false
+        physicsBody!.affectedByGravity = false
+        physicsBody!.categoryBitMask = playerCategory
+        physicsBody!.contactTestBitMask = enemyCategory
+        physicsBody!.collisionBitMask = enemyCategory
         speed = 100
-        stage.addChild(self)
-    }
-
-    func fire() {
-        bullet = Bullet(stage: stage!, player: self)
     }
 
 }

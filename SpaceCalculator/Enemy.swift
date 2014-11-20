@@ -8,16 +8,54 @@
 
 import SpriteKit
 
+enum MathOperator {
+    case Digit, Plus, Minus, Mul, Div, Equal
+}
+
 class Enemy: SKSpriteNode {
 
-    convenience init(stage: SKScene, name: String) {
+    convenience init(name: String) {
         self.init(imageNamed: "Button" + name)
-        position = CGPointMake(CGRectGetMidX(stage.frame), 400.0);
         setScale(0.5)
-        physicsBody = SKPhysicsBody(rectangleOfSize: size)
-        physicsBody?.affectedByGravity = false
-        physicsBody?.velocity = CGVectorMake(0, -100)
-        stage.addChild(self)
+        physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: size.width - 10, height: size.height - 10))
+        physicsBody!.affectedByGravity = false
+        physicsBody!.velocity = CGVectorMake(0, -100)
+        physicsBody!.categoryBitMask = enemyCategory
+
+        let waitAction = SKAction.waitForDuration(10)
+        let removeAction = SKAction.removeFromParent()
+        let sequence = [waitAction, removeAction]
+        runAction(SKAction.sequence(sequence))
+    }
+
+/*
+    deinit {
+        println("Enemy destroyed")
+    }
+*/
+
+    class func generateRandomly() -> Enemy {
+        var enemy:Enemy?
+        let type = arc4random_uniform(15)
+        switch (type) {
+        case 10:
+            enemy = PlusEnemy()
+        case 11:
+            enemy = MinusEnemy()
+        case 12:
+            enemy = MulEnemy()
+        case 13:
+            enemy = DivEnemy()
+        case 14:
+            enemy = EqualEnemy()
+        default:
+            enemy = DigitEnemy(digit: Int(type))
+        }
+        return enemy!
+    }
+
+    func getValue() -> String {
+        return ""
     }
 
 }

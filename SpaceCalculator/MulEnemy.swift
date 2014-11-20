@@ -6,14 +6,14 @@
 //  Copyright (c) 2014年 Pepsilover. All rights reserved.
 //
 
-class PlusEnemy: Enemy {
+class MulEnemy: Enemy {
 
     convenience override init() {
-        self.init(name: "Plus")
+        self.init(name: "Mul")
     }
 
     override func getValue() -> String {
-        return "+"
+        return "*"
     }
 
 }
