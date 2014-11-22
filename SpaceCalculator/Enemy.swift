@@ -17,15 +17,6 @@ class Enemy: SKSpriteNode {
     convenience init(name: String) {
         self.init(imageNamed: "Button" + name)
         setScale(0.5)
-        physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: size.width - 10, height: size.height - 10))
-        physicsBody!.affectedByGravity = false
-        physicsBody!.velocity = CGVectorMake(0, -100)
-        physicsBody!.categoryBitMask = enemyCategory
-
-        let waitAction = SKAction.waitForDuration(10)
-        let removeAction = SKAction.removeFromParent()
-        let sequence = [waitAction, removeAction]
-        runAction(SKAction.sequence(sequence))
     }
 
 /*
@@ -52,6 +43,18 @@ class Enemy: SKSpriteNode {
             enemy = DigitEnemy(digit: Int(type))
         }
         return enemy!
+    }
+
+    func fall() {
+        physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: size.width - 10, height: size.height - 10))
+        physicsBody!.affectedByGravity = false
+        physicsBody!.velocity = CGVectorMake(0, -100)
+        physicsBody!.categoryBitMask = enemyCategory
+
+        let waitAction = SKAction.waitForDuration(10)
+        let removeAction = SKAction.removeFromParent()
+        let sequence = [waitAction, removeAction]
+        runAction(SKAction.sequence(sequence))
     }
 
     func getValue() -> String {

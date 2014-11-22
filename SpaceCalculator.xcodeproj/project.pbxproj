@@ -37,6 +37,8 @@
 		20041D261A18DDC300D390BD /* PlusEnemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20041D251A18DDC300D390BD /* PlusEnemy.swift */; };
 		20041D281A18FDAD00D390BD /* Computation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20041D271A18FDAD00D390BD /* Computation.swift */; };
 		2015EB241A1E38D100CDCF3F /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2015EB231A1E38D100CDCF3F /* Calculator.swift */; };
+		20CC18F01A20AFA900AA35A1 /* ladybug.gif in Resources */ = {isa = PBXBuildFile; fileRef = 20CC18EF1A20AFA900AA35A1 /* ladybug.gif */; };
+		20CC18F21A20C1AD00AA35A1 /* DebugStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CC18F11A20C1AD00AA35A1 /* DebugStage.swift */; };
 		20CFA5231A1AEA9600B7C489 /* DivEnemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CFA5201A1AEA9600B7C489 /* DivEnemy.swift */; };
 		20CFA5241A1AEA9600B7C489 /* MinusEnemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CFA5211A1AEA9600B7C489 /* MinusEnemy.swift */; };
 		20CFA5251A1AEA9600B7C489 /* MulEnemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CFA5221A1AEA9600B7C489 /* MulEnemy.swift */; };
@@ -88,6 +90,8 @@
 		20041D251A18DDC300D390BD /* PlusEnemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlusEnemy.swift; sourceTree = "<group>"; };
 		20041D271A18FDAD00D390BD /* Computation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Computation.swift; sourceTree = "<group>"; };
 		2015EB231A1E38D100CDCF3F /* Calculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
+		20CC18EF1A20AFA900AA35A1 /* ladybug.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ladybug.gif; sourceTree = "<group>"; };
+		20CC18F11A20C1AD00AA35A1 /* DebugStage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugStage.swift; sourceTree = "<group>"; };
 		20CFA5201A1AEA9600B7C489 /* DivEnemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DivEnemy.swift; sourceTree = "<group>"; };
 		20CFA5211A1AEA9600B7C489 /* MinusEnemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinusEnemy.swift; sourceTree = "<group>"; };
 		20CFA5221A1AEA9600B7C489 /* MulEnemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MulEnemy.swift; sourceTree = "<group>"; };
@@ -137,6 +141,7 @@
 				20041CA81A16606A00D390BD /* AppDelegate.swift */,
 				20041CAA1A16606A00D390BD /* ViewController.swift */,
 				20041CC81A1665DE00D390BD /* Stage.swift */,
+				20CC18F11A20C1AD00AA35A1 /* DebugStage.swift */,
 				20041D1F1A18C3CF00D390BD /* Player.swift */,
 				20041D1D1A1895F100D390BD /* Bullet.swift */,
 				20041D271A18FDAD00D390BD /* Computation.swift */,
@@ -184,6 +189,7 @@
 		20041CFE1A179FA900D390BD /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				20CC18EF1A20AFA900AA35A1 /* ladybug.gif */,
 				20041CFF1A179FB800D390BD /* button0.png */,
 				20041D001A179FB800D390BD /* button1.png */,
 				20041D011A179FB800D390BD /* button2.png */,
@@ -299,6 +305,7 @@
 				20041D111A179FB800D390BD /* button3.png in Resources */,
 				20041D0F1A179FB800D390BD /* button1.png in Resources */,
 				20041D101A179FB800D390BD /* button2.png in Resources */,
+				20CC18F01A20AFA900AA35A1 /* ladybug.gif in Resources */,
 				20041D161A179FB800D390BD /* button8.png in Resources */,
 				20041D131A179FB800D390BD /* button5.png in Resources */,
 				20041D1B1A179FB800D390BD /* buttonMul.png in Resources */,
@@ -322,6 +329,7 @@
 			files = (
 				20041CC91A1665DF00D390BD /* Stage.swift in Sources */,
 				20CFA5251A1AEA9600B7C489 /* MulEnemy.swift in Sources */,
+				20CC18F21A20C1AD00AA35A1 /* DebugStage.swift in Sources */,
 				20041D281A18FDAD00D390BD /* Computation.swift in Sources */,
 				20041D241A18DB8100D390BD /* DigitEnemy.swift in Sources */,
 				20041CAB1A16606A00D390BD /* ViewController.swift in Sources */,

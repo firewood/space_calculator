@@ -1,5 +1,5 @@
 //
-//  PlusEnemy.swift
+//  MulEnemy.swift
 //  SpaceCalculator
 //
 //  Created by Kenichi Aramaki on 2014/11/16.

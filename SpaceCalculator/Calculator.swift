@@ -9,13 +9,22 @@
 import Foundation
 
 class Calculator {
+    var currentValue:Double = 0
+    var infixQueue:[String] = []
+    var lastOp:[String] = []
 
-    class func evaluatePostfix(rpn:[String]) ->Double {
-        var stack:[Double] = []
+    func clearAll() {
+        currentValue = 0
+        clearQueue()
+    }
+
+    func clearQueue() {
+        infixQueue.removeAll(keepCapacity: false)
+    }
+
+    class func evaluatePostfix(initialValue:Double, rpn:[String]) ->Double {
+        var stack:[Double] = [initialValue]
         func ALU(f:((Double, Double) -> Double)) -> Double {
-            if (stack.isEmpty) {
-                stack.append(0)
-            }
             if (stack.count < 2) {
                 stack.append(stack.first!)
             }
@@ -87,6 +96,28 @@ class Calculator {
         }
         flush_number()
         return result
+    }
+
+    func execute() -> Double {
+        switch (infixQueue.count) {
+        case 0:
+            infixQueue = lastOp
+        case 1:
+            break
+        default:
+            lastOp = [infixQueue[infixQueue.count-2], infixQueue.last!]
+        }
+
+        var rpnQueue:[String] = Calculator.infixToPostfix(infixQueue)
+        println("rpnQueue: \(rpnQueue)")
+        currentValue = Calculator.evaluatePostfix(currentValue, rpn:rpnQueue)
+        return currentValue
+    }
+
+    func execute(commands:String) -> Double {
+        infixQueue = Calculator.stringToInfix(commands)
+        println("infixQueue: \(infixQueue)")
+        return execute()
     }
 
 }

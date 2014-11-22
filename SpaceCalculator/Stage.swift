@@ -47,6 +47,7 @@ class Stage: SKScene, SKPhysicsContactDelegate {
             let left:CGFloat = CGFloat(arc4random_uniform(UInt32(size.width - enemy.size.width))) + enemy.size.width / 2
             if (fabs(previousEnemyLeft - left) >= 120) {
                 enemy.position = CGPointMake(left, size.height)
+                enemy.fall()
                 addChild(enemy)
                 previousEnemyLeft = left
                 break

@@ -9,9 +9,11 @@
 import SpriteKit
 
 class Computation {
-    var queue:[String] = []
+    var calc:Calculator = Calculator()
+//    var queue:[String] = []
     var currentValue:Double = 0
     var isFirst:Bool = true
+    var mathOp:String = ""
     var background:SKSpriteNode?
     var text:SKLabelNode?
 
@@ -61,25 +63,43 @@ class Computation {
     }
 
     func onEqual() {
+/*
         let rpn:[String] = Calculator.infixToPostfix(queue)
         currentValue = Calculator.evaluatePostfix(rpn)
         queue = []
+*/
     }
 
     func registerEnemy(enemy: Enemy) {
         let v:String = enemy.getValue()
         switch (v) {
         case "+", "-", "*", "/":
-            println("push: " + getCurrentText() + ", " + v)
-            queue.append(getCurrentText())
-            queue.append(v)
-            isFirst = true
+            if (!mathOp.isEmpty) {
+                mathOp = v
+            } else {
+                println("push: " + getCurrentText() + ", " + v)
+                calc.infixQueue.append(String(getCurrentText()))
+                isFirst = true
+                mathOp = v
+                currentValue = calc.execute()
+            }
         case "=":
-            println("push: " + getCurrentText())
-            queue.append(getCurrentText())
-            onEqual()
+/*
+            if (!mathOp.isEmpty) {
+                calc.infixQueue.append(mathOp)
+                calc.infixQueue.append(String(getCurrentText()))
+                mathOp = ""
+            }
+*/
+            calc.infixQueue.append(String(getCurrentText()))
+            currentValue = calc.execute()
+            calc.clearQueue()
             isFirst = true
         default:
+            if (!mathOp.isEmpty) {
+                calc.infixQueue.append(mathOp)
+                mathOp = ""
+            }
             if (isFirst) {
                 isFirst = false
                 currentValue = 0

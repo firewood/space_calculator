@@ -12,6 +12,7 @@ import SpriteKit
 class ViewController: UIViewController, CloseProtocol {
 
     @IBOutlet weak var StartButton: UIButton!
+    @IBOutlet weak var DebugButton: UIButton!
     var skView: SKView?
 
     override func viewDidLoad() {
@@ -24,10 +25,18 @@ class ViewController: UIViewController, CloseProtocol {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func didTap(sender: AnyObject) {
-        println("Tapped")
-
+    @IBAction func didTapStartButton(sender: AnyObject) {
         let s = Stage(size: view.frame.size)
+        s.close = self
+        s.scaleMode = SKSceneScaleMode.AspectFill
+        skView = SKView(frame: view.frame)
+        skView!.showsFPS = true
+        skView!.presentScene(s)
+        view.addSubview(skView!)
+    }
+
+    @IBAction func didTapDebugButton(sender: AnyObject) {
+        let s = DebugStage(size: view.frame.size)
         s.close = self
         s.scaleMode = SKSceneScaleMode.AspectFill
         skView = SKView(frame: view.frame)
