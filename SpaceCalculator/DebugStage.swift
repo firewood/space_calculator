@@ -20,7 +20,7 @@ class DebugStage: SKScene {
             DigitEnemy(digit: 1), DigitEnemy(digit: 2), DigitEnemy(digit: 3), MinusEnemy(),
             DigitEnemy(digit: 4), DigitEnemy(digit: 5), DigitEnemy(digit: 6), PlusEnemy(),
             DigitEnemy(digit: 7), DigitEnemy(digit: 8), DigitEnemy(digit: 9), MulEnemy(),
-            nil, nil, nil, DivEnemy()
+            ClearEnemy(), nil, nil, DivEnemy()
         ]
 
         for (var i = 0; i < enemies.count; i++) {
@@ -37,8 +37,8 @@ class DebugStage: SKScene {
             let location = touch.locationInNode(self)
             let node:SKNode? = nodeAtPoint(location)
             if (node != nil && node!.isKindOfClass(Enemy)) {
-                println("pressed: " + (node! as Enemy).getValue())
-                computation!.registerEnemy(node! as Enemy)
+                var command:String = (node! as Enemy).getValue()
+                computation!.press(command)
             }
         }
     }

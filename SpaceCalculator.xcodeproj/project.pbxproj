@@ -39,6 +39,8 @@
 		20C9CEDB1A21B52E00FC947A /* ladybug.gif in Resources */ = {isa = PBXBuildFile; fileRef = 20C9CECA1A21B52E00FC947A /* ladybug.gif */; };
 		20C9CEDC1A21B52E00FC947A /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = 20C9CECB1A21B52E00FC947A /* Spaceship.png */; };
 		20C9CEDE1A2223C000FC947A /* bullet.png in Resources */ = {isa = PBXBuildFile; fileRef = 20C9CEDD1A2223C000FC947A /* bullet.png */; };
+		20C9CEE01A222CF200FC947A /* buttonClear.png in Resources */ = {isa = PBXBuildFile; fileRef = 20C9CEDF1A222CF200FC947A /* buttonClear.png */; };
+		20C9CEE21A222DD500FC947A /* ClearEnemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C9CEE11A222DD500FC947A /* ClearEnemy.swift */; };
 		20CC18F21A20C1AD00AA35A1 /* DebugStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CC18F11A20C1AD00AA35A1 /* DebugStage.swift */; };
 		20CFA5231A1AEA9600B7C489 /* DivEnemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CFA5201A1AEA9600B7C489 /* DivEnemy.swift */; };
 		20CFA5241A1AEA9600B7C489 /* MinusEnemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CFA5211A1AEA9600B7C489 /* MinusEnemy.swift */; };
@@ -93,6 +95,8 @@
 		20C9CECA1A21B52E00FC947A /* ladybug.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ladybug.gif; sourceTree = "<group>"; };
 		20C9CECB1A21B52E00FC947A /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
 		20C9CEDD1A2223C000FC947A /* bullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bullet.png; sourceTree = "<group>"; };
+		20C9CEDF1A222CF200FC947A /* buttonClear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonClear.png; sourceTree = "<group>"; };
+		20C9CEE11A222DD500FC947A /* ClearEnemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClearEnemy.swift; sourceTree = "<group>"; };
 		20CC18F11A20C1AD00AA35A1 /* DebugStage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugStage.swift; sourceTree = "<group>"; };
 		20CFA5201A1AEA9600B7C489 /* DivEnemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DivEnemy.swift; sourceTree = "<group>"; };
 		20CFA5211A1AEA9600B7C489 /* MinusEnemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinusEnemy.swift; sourceTree = "<group>"; };
@@ -149,6 +153,7 @@
 				20041D271A18FDAD00D390BD /* Computation.swift */,
 				2015EB231A1E38D100CDCF3F /* Calculator.swift */,
 				20041D211A18D6B300D390BD /* Enemy.swift */,
+				20C9CEE11A222DD500FC947A /* ClearEnemy.swift */,
 				20041D231A18DB8100D390BD /* DigitEnemy.swift */,
 				20041D251A18DDC300D390BD /* PlusEnemy.swift */,
 				20CFA5211A1AEA9600B7C489 /* MinusEnemy.swift */,
@@ -202,6 +207,7 @@
 				20C9CEC21A21B52E00FC947A /* button7.png */,
 				20C9CEC31A21B52E00FC947A /* button8.png */,
 				20C9CEC41A21B52E00FC947A /* button9.png */,
+				20C9CEDF1A222CF200FC947A /* buttonClear.png */,
 				20C9CEC51A21B52E00FC947A /* buttonDiv.png */,
 				20C9CEC61A21B52E00FC947A /* buttonEqual.png */,
 				20C9CEC71A21B52E00FC947A /* buttonMinus.png */,
@@ -313,6 +319,7 @@
 				20C9CED61A21B52E00FC947A /* buttonDiv.png in Resources */,
 				20C9CEDB1A21B52E00FC947A /* ladybug.gif in Resources */,
 				20C9CED21A21B52E00FC947A /* button6.png in Resources */,
+				20C9CEE01A222CF200FC947A /* buttonClear.png in Resources */,
 				20C9CED91A21B52E00FC947A /* buttonMul.png in Resources */,
 				20041CB01A16606A00D390BD /* Images.xcassets in Resources */,
 			);
@@ -332,6 +339,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20C9CEE21A222DD500FC947A /* ClearEnemy.swift in Sources */,
 				20041CC91A1665DF00D390BD /* Stage.swift in Sources */,
 				20CFA5251A1AEA9600B7C489 /* MulEnemy.swift in Sources */,
 				20CC18F21A20C1AD00AA35A1 /* DebugStage.swift in Sources */,

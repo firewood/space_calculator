@@ -25,11 +25,13 @@ class Computation {
         background!.zPosition = 1000000000
         stage.addChild(background!)
 
-        text = SKLabelNode(text: getCurrentText())
+//        text = SKLabelNode(text: getCurrentText())
+        text = SKLabelNode()
         text!.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Right
         text!.position = CGPoint(x: stage.size.width - 10, y: stage.size.height - 50)
         text!.zPosition = 1000000001
         stage.addChild(text!)
+        updateText()
     }
 
     func getCurrentText() -> String {
@@ -38,6 +40,8 @@ class Computation {
             return "0"
         case Double.infinity:
             return "∞"
+        case -Double.infinity:
+            return "-∞"
         case Double.NaN:
             return "NaN"
         default:
@@ -62,39 +66,42 @@ class Computation {
         text!.text = getCurrentText()
     }
 
-    func onEqual() {
-/*
-        let rpn:[String] = Calculator.infixToPostfix(queue)
-        currentValue = Calculator.evaluatePostfix(rpn)
-        queue = []
-*/
-    }
+    func press(command:String) {
+        println("queue: \(calc.infixQueue), result: \(currentValue), add: \(command)")
 
-    func registerEnemy(enemy: Enemy) {
-        let v:String = enemy.getValue()
-        switch (v) {
-        case "+", "-", "*", "/":
-            if (!mathOp.isEmpty) {
-                mathOp = v
-            } else {
-                println("push: " + getCurrentText() + ", " + v)
+        switch (command) {
+        case "C":
+            calc.clearAll()
+            currentValue = 0
+            isFirst = true
+            mathOp = ""
+        case "+", "-":
+            if (!isFirst) {
                 calc.infixQueue.append(String(getCurrentText()))
-                isFirst = true
-                mathOp = v
                 currentValue = calc.execute()
             }
+            isFirst = true
+            mathOp = command
+        case "+", "-", "*", "/":
+            if (!isFirst) {
+                calc.currentValue = currentValue
+                calc.infixQueue.append(String(getCurrentText()))
+            }
+            isFirst = true
+            mathOp = command
         case "=":
-/*
+            if (!isFirst) {
+                calc.infixQueue.append(String(getCurrentText()))
+            }
             if (!mathOp.isEmpty) {
                 calc.infixQueue.append(mathOp)
                 calc.infixQueue.append(String(getCurrentText()))
-                mathOp = ""
             }
-*/
-            calc.infixQueue.append(String(getCurrentText()))
+
             currentValue = calc.execute()
-            calc.clearQueue()
             isFirst = true
+            mathOp = ""
+            calc.infixQueue = []
         default:
             if (!mathOp.isEmpty) {
                 calc.infixQueue.append(mathOp)
@@ -106,9 +113,8 @@ class Computation {
             } else {
                 currentValue *= 10
             }
-            currentValue += (v as NSString).doubleValue
+            currentValue += (command as NSString).doubleValue
         }
         updateText()
     }
-
 }

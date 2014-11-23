@@ -15,11 +15,8 @@ class Calculator {
 
     func clearAll() {
         currentValue = 0
-        clearQueue()
-    }
-
-    func clearQueue() {
-        infixQueue.removeAll(keepCapacity: false)
+        infixQueue = []
+        lastOp = []
     }
 
     class func evaluatePostfix(initialValue:Double, rpn:[String]) ->Double {
@@ -99,17 +96,24 @@ class Calculator {
     }
 
     func execute() -> Double {
+        var rpnQueue:[String] = []
+
+        println("EXEC")
+        println("  queue: \(infixQueue)")
+
         switch (infixQueue.count) {
         case 0:
-            infixQueue = lastOp
+            println("  last op: \(lastOp)")
+            rpnQueue = Calculator.infixToPostfix(lastOp)
         case 1:
-            break
+            lastOp = [infixQueue.last!]
+            rpnQueue = Calculator.infixToPostfix(infixQueue)
         default:
             lastOp = [infixQueue[infixQueue.count-2], infixQueue.last!]
+            rpnQueue = Calculator.infixToPostfix(infixQueue)
         }
 
-        var rpnQueue:[String] = Calculator.infixToPostfix(infixQueue)
-        println("rpnQueue: \(rpnQueue)")
+        println("  rpnQueue: \(rpnQueue)")
         currentValue = Calculator.evaluatePostfix(currentValue, rpn:rpnQueue)
         return currentValue
     }

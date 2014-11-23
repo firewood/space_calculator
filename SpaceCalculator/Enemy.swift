@@ -27,7 +27,7 @@ class Enemy: SKSpriteNode {
 
     class func generateRandomly() -> Enemy {
         var enemy:Enemy?
-        let type = arc4random_uniform(15)
+        let type = arc4random_uniform(16)
         switch (type) {
         case 10:
             enemy = PlusEnemy()
@@ -39,6 +39,8 @@ class Enemy: SKSpriteNode {
             enemy = DivEnemy()
         case 14:
             enemy = EqualEnemy()
+        case 15:
+            enemy = ClearEnemy()
         default:
             enemy = DigitEnemy(digit: Int(type))
         }

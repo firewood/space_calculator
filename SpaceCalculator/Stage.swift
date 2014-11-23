@@ -120,7 +120,12 @@ class Stage: SKScene, SKPhysicsContactDelegate {
         if (pBody.categoryBitMask == bulletCategory) {
 //            println("Bullet")
             pBody.node!.removeFromParent()
-            computation!.registerEnemy(eBody.node as Enemy)
+            let command:String = (eBody.node as Enemy).getValue()
+            if (command == "C") {
+                overflow()
+                return
+            }
+            computation!.press(command)
             eBody.node!.removeFromParent()
 //            nextEnemy = 0
         }
