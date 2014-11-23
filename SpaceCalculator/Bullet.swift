@@ -8,16 +8,14 @@
 
 import SpriteKit
 
-class Bullet: SKShapeNode {
+class Bullet: SKSpriteNode {
 
-    convenience init(radius:CGFloat) {
-        let size = CGSize(width: radius * 0.5, height: radius * 2.5)
-        self.init()
-        self.init(ellipseOfSize: size)
-        fillColor = SKColor.whiteColor()
-        physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: radius * 0.5, height: radius * 2))
-        physicsBody?.affectedByGravity = false
-        physicsBody?.velocity = CGVectorMake(0, 384)
+    convenience override init() {
+        self.init(imageNamed: "bullet")
+        setScale(0.04)
+        physicsBody = SKPhysicsBody(rectangleOfSize: size)
+        physicsBody!.affectedByGravity = false
+        physicsBody?.velocity = CGVectorMake(0, 500)
         physicsBody!.categoryBitMask = bulletCategory
         physicsBody!.contactTestBitMask = enemyCategory
         physicsBody!.collisionBitMask = enemyCategory

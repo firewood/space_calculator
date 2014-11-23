@@ -12,8 +12,8 @@ class Player: SKSpriteNode {
 
     convenience override init() {
         self.init(imageNamed: "Spaceship")
-        setScale(0.1)
-        physicsBody = SKPhysicsBody(rectangleOfSize: size)
+        setScale(0.15)
+        physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: self.size.width*0.6, height: self.size.height*0.75))
         physicsBody!.affectedByGravity = false
         physicsBody!.categoryBitMask = playerCategory
         physicsBody!.contactTestBitMask = enemyCategory

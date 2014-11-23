@@ -53,7 +53,7 @@ class Stage: SKScene, SKPhysicsContactDelegate {
                 break
             }
         }
-        nextEnemy = 1.5
+        nextEnemy = 1.0
     }
 
     func overflow() {
@@ -100,7 +100,7 @@ class Stage: SKScene, SKPhysicsContactDelegate {
     override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
         // fire by tap
         if (playerMovedDistance <= 4.0) {
-            let bullet = Bullet(radius: 5.0)
+            let bullet = Bullet()
             bullet.position = CGPointMake(player!.position.x, 45.0);
             addChild(bullet)
         }

@@ -15,7 +15,7 @@ enum MathOperator {
 class Enemy: SKSpriteNode {
 
     convenience init(name: String) {
-        self.init(imageNamed: "Button" + name)
+        self.init(imageNamed: "button" + name)
         setScale(0.5)
     }
 
@@ -48,7 +48,7 @@ class Enemy: SKSpriteNode {
     func fall() {
         physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: size.width - 10, height: size.height - 10))
         physicsBody!.affectedByGravity = false
-        physicsBody!.velocity = CGVectorMake(0, -100)
+        physicsBody!.velocity = CGVectorMake(0, -150)
         physicsBody!.categoryBitMask = enemyCategory
 
         let waitAction = SKAction.waitForDuration(10)
