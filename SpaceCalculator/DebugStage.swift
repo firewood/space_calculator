@@ -23,10 +23,15 @@ class DebugStage: SKScene {
             ClearEnemy(), nil, nil, DivEnemy()
         ]
 
+        let horizontal:CGFloat = 75
+        let left:CGFloat = (size.width - CGFloat(horizontal) * (4-1)) / 2
+        let vertical:CGFloat = 60
+        let top:CGFloat = (size.height - computation!.background!.frame.height - CGFloat(vertical) * (5-1)) / 2
+
         for (var i = 0; i < enemies.count; i++) {
             let enemy:Enemy? = enemies[i]
             if (enemy != nil) {
-                enemy?.position = CGPointMake(CGFloat(i % 4) * 75 + 50, CGFloat(i / 4) * 50 + 100)
+                enemy?.position = CGPointMake(CGFloat(i % 4) * horizontal + left, CGFloat(i / 4) * vertical + top)
                 addChild(enemy!)
             }
         }

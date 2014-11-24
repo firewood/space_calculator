@@ -47,7 +47,7 @@ class Computation {
             break
         }
 
-        if (fabs(currentValue) > 1.0E+10 || fabs(currentValue) < 1.0E-10) {
+        if (fabs(currentValue) >= 1.0E+14 || fabs(currentValue) < 1.0E-12) {
             return String(format: "%.10E", currentValue)
         }
 
@@ -102,6 +102,10 @@ class Computation {
             mathOp = ""
             calc.infixQueue = []
         default:
+            if (!isFirst && currentValue >= 1.0E+13) {
+                return
+            }
+
             if (!mathOp.isEmpty) {
                 calc.infixQueue.append(mathOp)
                 mathOp = ""

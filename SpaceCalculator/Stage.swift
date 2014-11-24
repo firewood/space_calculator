@@ -22,6 +22,7 @@ class Stage: SKScene, SKPhysicsContactDelegate {
     var computation: Computation?
     var player: Player?
     var timer:NSTimer?
+    var isPlaying:Bool = true
     var isPlayerMoving: Bool = false
     var playerMovedDistance: Float = 0
     var nextEnemy: Double = 0
@@ -41,18 +42,6 @@ class Stage: SKScene, SKPhysicsContactDelegate {
         addChild(player!)
     }
 
-    func destroyPlayer() {
-        let ex:SKEmitterNode = Explosion.generate()
-        ex.xScale = 0.3
-        ex.yScale = 0.3
-        ex.position = player!.position
-        addChild(ex)
-        let fadeOutAction = SKAction.fadeOutWithDuration(0.5)
-        let removeAction = SKAction.removeFromParent()
-        let sequence = [fadeOutAction, removeAction]
-        ex.runAction(SKAction.sequence(sequence))
-    }
-
     func setupEnemy() {
         let enemy:Enemy = Enemy.generateRandomly()
         while (true) {
@@ -68,23 +57,54 @@ class Stage: SKScene, SKPhysicsContactDelegate {
         nextEnemy = 1.0
     }
 
-    func overflow() {
-        timer!.invalidate()
-        destroyPlayer()
+    func setupExplosion(position:CGPoint, scale:CGFloat, duration:NSTimeInterval) {
+        let ex:SKEmitterNode = Explosion.generate()
+        ex.xScale = scale
+        ex.yScale = scale
+        ex.position = position
+        addChild(ex)
+        let fadeOutAction = SKAction.fadeOutWithDuration(duration)
+        let removeAction = SKAction.removeFromParent()
+        let sequence = [fadeOutAction, removeAction]
+        ex.runAction(SKAction.sequence(sequence))
+    }
 
+    func destroyPlayer() {
+        if (player != nil) {
+            setupExplosion(player!.position, scale: 0.3, duration: 0.5)
+        }
+    }
+
+    func destroyEnemy(enemy:SKNode) {
+        setupExplosion(enemy.position, scale: 0.2, duration: 0.3)
+        enemy.removeFromParent()
+    }
+
+    func banner(s:String) {
         let text:SKLabelNode = SKLabelNode()
         text.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Center
         text.position = CGPoint(x: size.width / 2, y: size.height / 2)
         text.zPosition = 1000000002
-        text.text = "Game Overflow"
+        text.text = s
         text.alpha = 0
         addChild(text)
         let fadeInAction = SKAction.fadeInWithDuration(5)
         let sequence = [fadeInAction]
         text.runAction(SKAction.sequence(sequence))
-        
-        
-//        close!.onClose()
+        nextEnemy = 2       // guard timer
+    }
+
+    func overflow() {
+        destroyPlayer()
+        if (isPlaying) {
+            isPlaying = false
+            banner("Game Overflow")
+        }
+    }
+
+    func clear() {
+        isPlaying = false
+        banner("CLEAR!!")
     }
 
     override func didMoveToView(view: SKView) {
@@ -97,6 +117,10 @@ class Stage: SKScene, SKPhysicsContactDelegate {
     }
 
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        if (!isPlaying) {
+            return
+        }
+
         isPlayerMoving = false
         playerMovedDistance = 0
 
@@ -111,7 +135,7 @@ class Stage: SKScene, SKPhysicsContactDelegate {
     }
 
     override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
-        if (!isPlayerMoving) {
+        if (!isPlaying || !isPlayerMoving) {
             return
         }
 
@@ -124,8 +148,16 @@ class Stage: SKScene, SKPhysicsContactDelegate {
     }
 
     override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
+        if (!isPlaying) {
+            if (nextEnemy <= 0) {
+                timer!.invalidate()
+                close!.onClose()
+            }
+            return
+        }
+
         // fire by tap
-        if (playerMovedDistance <= 4.0) {
+        if (isPlaying && playerMovedDistance <= 4.0) {
             let bullet = Bullet()
             bullet.position = CGPointMake(player!.position.x, 45.0);
             addChild(bullet)
@@ -147,19 +179,26 @@ class Stage: SKScene, SKPhysicsContactDelegate {
 //            println("Bullet")
             pBody.node!.removeFromParent()
             let command:String = (eBody.node as Enemy).getValue()
-            if (command == "C") {
-                overflow()
-                return
-            }
             computation!.press(command)
-            eBody.node!.removeFromParent()
-//            nextEnemy = 0
+            destroyEnemy(eBody.node!)
+            if (command == "C") {
+                clear()
+            }
+            switch (computation!.currentValue) {
+            case -Double.infinity, Double.infinity:
+                overflow()
+            default:
+                if (computation!.currentValue >= 1.0E+100 || computation!.currentValue <= -1.0E+100) {
+                    overflow()
+                }
+                break
+            }
         }
     }
 
     func onTimer() {
         nextEnemy -= timerInterval
-        if (nextEnemy <= 0) {
+        if (isPlaying && nextEnemy <= 0) {
             setupEnemy()
         }
     }

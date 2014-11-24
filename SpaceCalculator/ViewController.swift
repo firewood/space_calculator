@@ -29,7 +29,6 @@ class ViewController: UIViewController, CloseProtocol {
         s.close = self
         s.scaleMode = SKSceneScaleMode.AspectFill
         skView = SKView(frame: view.frame)
-        skView!.showsFPS = true
         skView!.presentScene(s)
         view.addSubview(skView!)
     }
@@ -39,7 +38,6 @@ class ViewController: UIViewController, CloseProtocol {
         s.close = self
         s.scaleMode = SKSceneScaleMode.AspectFill
         skView = SKView(frame: view.frame)
-        skView!.showsFPS = true
         skView!.presentScene(s)
         view.addSubview(skView!)
     }
