@@ -12,6 +12,7 @@
 #import <Foundation/Foundation.h>
 #import <SpriteKit/SpriteKit.h>
 
+// alternative to SKEmitterNode:
 @interface Explosion : NSObject
 
 +(SKEmitterNode *)generate;

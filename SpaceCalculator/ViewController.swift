@@ -10,7 +10,6 @@ import UIKit
 import SpriteKit
 
 class ViewController: UIViewController, CloseProtocol {
-
     @IBOutlet weak var StartButton: UIButton!
     @IBOutlet weak var DebugButton: UIButton!
     var skView: SKView?
@@ -25,6 +24,7 @@ class ViewController: UIViewController, CloseProtocol {
     }
 
     @IBAction func didTapStartButton(sender: AnyObject) {
+        // start a new game
         let s = Stage(size: view.frame.size)
         s.close = self
         s.scaleMode = SKSceneScaleMode.AspectFill
@@ -34,6 +34,7 @@ class ViewController: UIViewController, CloseProtocol {
     }
 
     @IBAction func didTapDebugButton(sender: AnyObject) {
+        // show debug console :)
         let s = DebugStage(size: view.frame.size)
         s.close = self
         s.scaleMode = SKSceneScaleMode.AspectFill
@@ -46,6 +47,4 @@ class ViewController: UIViewController, CloseProtocol {
         skView!.removeFromSuperview()
         skView = nil
     }
-
 }
-

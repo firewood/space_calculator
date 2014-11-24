@@ -22,7 +22,6 @@
 		2015EB241A1E38D100CDCF3F /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2015EB231A1E38D100CDCF3F /* Calculator.swift */; };
 		203FB2DF1A22DA9A00DFF0D3 /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 203FB2DE1A22DA9A00DFF0D3 /* Logo.png */; };
 		203FB2E11A22E1D200DFF0D3 /* Debug.png in Resources */ = {isa = PBXBuildFile; fileRef = 203FB2E01A22E1D200DFF0D3 /* Debug.png */; };
-		20772A3B1A224925002095FE /* Explosion.m in Sources */ = {isa = PBXBuildFile; fileRef = 20772A3A1A224925002095FE /* Explosion.m */; };
 		20C9CECC1A21B52E00FC947A /* button0.png in Resources */ = {isa = PBXBuildFile; fileRef = 20C9CEBB1A21B52E00FC947A /* button0.png */; };
 		20C9CECD1A21B52E00FC947A /* button1.png in Resources */ = {isa = PBXBuildFile; fileRef = 20C9CEBC1A21B52E00FC947A /* button1.png */; };
 		20C9CECE1A21B52E00FC947A /* button2.png in Resources */ = {isa = PBXBuildFile; fileRef = 20C9CEBD1A21B52E00FC947A /* button2.png */; };
@@ -82,9 +81,6 @@
 		2015EB231A1E38D100CDCF3F /* Calculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
 		203FB2DE1A22DA9A00DFF0D3 /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
 		203FB2E01A22E1D200DFF0D3 /* Debug.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Debug.png; sourceTree = "<group>"; };
-		20772A391A224925002095FE /* SpaceCalculator-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpaceCalculator-Bridging-Header.h"; sourceTree = "<group>"; };
-		20772A3A1A224925002095FE /* Explosion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Explosion.m; sourceTree = "<group>"; };
-		20772A3C1A224AC6002095FE /* Explosion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Explosion.h; sourceTree = "<group>"; };
 		20C9CEBB1A21B52E00FC947A /* button0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button0.png; sourceTree = "<group>"; };
 		20C9CEBC1A21B52E00FC947A /* button1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button1.png; sourceTree = "<group>"; };
 		20C9CEBD1A21B52E00FC947A /* button2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button2.png; sourceTree = "<group>"; };
@@ -157,8 +153,6 @@
 				20041CA81A16606A00D390BD /* AppDelegate.swift */,
 				20041CAA1A16606A00D390BD /* ViewController.swift */,
 				20041CC81A1665DE00D390BD /* Stage.swift */,
-				20772A3A1A224925002095FE /* Explosion.m */,
-				20772A3C1A224AC6002095FE /* Explosion.h */,
 				20CC18F11A20C1AD00AA35A1 /* DebugStage.swift */,
 				20041D1F1A18C3CF00D390BD /* Player.swift */,
 				20041D1D1A1895F100D390BD /* Bullet.swift */,
@@ -177,7 +171,6 @@
 				20041CAC1A16606A00D390BD /* Main.storyboard */,
 				20041CAF1A16606A00D390BD /* Images.xcassets */,
 				20041CA61A16606A00D390BD /* Supporting Files */,
-				20772A391A224925002095FE /* SpaceCalculator-Bridging-Header.h */,
 			);
 			path = SpaceCalculator;
 			sourceTree = "<group>";
@@ -370,7 +363,6 @@
 				20041D261A18DDC300D390BD /* PlusEnemy.swift in Sources */,
 				20041CA91A16606A00D390BD /* AppDelegate.swift in Sources */,
 				2015EB241A1E38D100CDCF3F /* Calculator.swift in Sources */,
-				20772A3B1A224925002095FE /* Explosion.m in Sources */,
 				20CFA5241A1AEA9600B7C489 /* MinusEnemy.swift in Sources */,
 				20041D201A18C3CF00D390BD /* Player.swift in Sources */,
 				20CFA5271A1B517A00B7C489 /* EqualEnemy.swift in Sources */,
@@ -495,7 +487,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "SpaceCalculator/SpaceCalculator-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -510,7 +501,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "SpaceCalculator/SpaceCalculator-Bridging-Header.h";
 			};
 			name = Release;
 		};

@@ -12,14 +12,16 @@ let playerCategory: UInt32 = 1
 let bulletCategory: UInt32 = 2
 let enemyCategory: UInt32 = 4
 let timerInterval:Double = 0.5
+let newEnemyInterval:Double = 1.0
 
+// protocol to close scene
 protocol CloseProtocol {
     func onClose()
 }
 
 class Stage: SKScene, SKPhysicsContactDelegate {
     var close: CloseProtocol?
-    var computation: Computation?
+    var computation: Computation?       // score board
     var player: Player?
     var timer:NSTimer?
     var isPlaying:Bool = true
@@ -33,6 +35,7 @@ class Stage: SKScene, SKPhysicsContactDelegate {
     }
 
     func setupComputation() {
+        // generate score board on top
         computation = Computation(stage: self)
     }
 
@@ -43,8 +46,10 @@ class Stage: SKScene, SKPhysicsContactDelegate {
     }
 
     func setupEnemy() {
+        // generate new random enemy on top
         let enemy:Enemy = Enemy.generateRandomly()
         while (true) {
+            // keep new enemy away from previous one
             let left:CGFloat = CGFloat(arc4random_uniform(UInt32(size.width - enemy.size.width))) + enemy.size.width / 2
             if (fabs(previousEnemyLeft - left) >= 120) {
                 enemy.position = CGPointMake(left, size.height)
@@ -54,11 +59,13 @@ class Stage: SKScene, SKPhysicsContactDelegate {
                 break
             }
         }
-        nextEnemy = 1.0
+        nextEnemy = newEnemyInterval
     }
 
+    // generate explosion effect
     func setupExplosion(position:CGPoint, scale:CGFloat, duration:NSTimeInterval) {
-        let ex:SKEmitterNode = Explosion.generate()
+        // alternative to SKEmitterNode:filenamed
+        let ex:SKEmitterNode = NSKeyedUnarchiver.unarchiveObjectWithFile(NSBundle.mainBundle().pathForResource("Explosion", ofType: "sks")!) as SKEmitterNode
         ex.xScale = scale
         ex.yScale = scale
         ex.position = position
@@ -69,17 +76,20 @@ class Stage: SKScene, SKPhysicsContactDelegate {
         ex.runAction(SKAction.sequence(sequence))
     }
 
+    // burn the player
     func destroyPlayer() {
         if (player != nil) {
             setupExplosion(player!.position, scale: 0.3, duration: 0.5)
         }
     }
 
+    // burn the enemy
     func destroyEnemy(enemy:SKNode) {
         setupExplosion(enemy.position, scale: 0.2, duration: 0.3)
         enemy.removeFromParent()
     }
 
+    // show result banner
     func banner(s:String) {
         let text:SKLabelNode = SKLabelNode()
         text.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Center
@@ -94,6 +104,7 @@ class Stage: SKScene, SKPhysicsContactDelegate {
         nextEnemy = 2       // guard timer
     }
 
+    // game overflow
     func overflow() {
         destroyPlayer()
         if (isPlaying) {
@@ -102,13 +113,14 @@ class Stage: SKScene, SKPhysicsContactDelegate {
         }
     }
 
+    // game cleared
     func clear() {
         isPlaying = false
         banner("CLEAR!!")
     }
 
+    // initialization
     override func didMoveToView(view: SKView) {
-        // initialization
         setupComputation()
         setupPlayer()
         setupEnemy()
@@ -116,9 +128,10 @@ class Stage: SKScene, SKPhysicsContactDelegate {
         self.physicsWorld.contactDelegate = self
     }
 
+    // touch start
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         if (!isPlaying) {
-            return
+            return      // game is over
         }
 
         isPlayerMoving = false
@@ -139,6 +152,7 @@ class Stage: SKScene, SKPhysicsContactDelegate {
             return
         }
 
+        // player is in dragging
         for touch: AnyObject in touches {
             let location = touch.locationInNode(self)
             let diff: Float = Float(location.x - player!.position.x)
@@ -150,6 +164,7 @@ class Stage: SKScene, SKPhysicsContactDelegate {
     override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
         if (!isPlaying) {
             if (nextEnemy <= 0) {
+                // free resources and close
                 timer!.invalidate()
                 close!.onClose()
             }
@@ -164,20 +179,24 @@ class Stage: SKScene, SKPhysicsContactDelegate {
         }
     }
 
+    // collision handling
     func didBeginContact(contact: SKPhysicsContact!) {
         var pBody, eBody: SKPhysicsBody
         pBody = contact.bodyA
         eBody = contact.bodyB
         if (pBody.categoryBitMask == enemyCategory) {
+            // make eBody be enemy
             swap(&pBody, &eBody)
         }
         if (pBody.categoryBitMask == playerCategory) {
-            println("Player")
+            println("Player hit")
             overflow()
         }
         if (pBody.categoryBitMask == bulletCategory) {
 //            println("Bullet")
             pBody.node!.removeFromParent()
+
+            // send enemy command to score board
             let command:String = (eBody.node as Enemy).getValue()
             computation!.press(command)
             destroyEnemy(eBody.node!)
@@ -196,11 +215,11 @@ class Stage: SKScene, SKPhysicsContactDelegate {
         }
     }
 
+    // adding new enemy every newEnemyInterval
     func onTimer() {
         nextEnemy -= timerInterval
         if (isPlaying && nextEnemy <= 0) {
             setupEnemy()
         }
     }
-
 }
