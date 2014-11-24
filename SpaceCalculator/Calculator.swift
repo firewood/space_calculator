@@ -29,6 +29,12 @@ class Calculator {
             stack.removeLast()
             var b:Double = stack.last!
             stack.removeLast()
+            if (a == Double.infinity || b == Double.infinity) {
+                return Double.infinity
+            }
+            if (a == -Double.infinity || b == -Double.infinity) {
+                return -Double.infinity
+            }
             return f(a, b)
         }
         for c in rpn {
