@@ -41,6 +41,18 @@ class Stage: SKScene, SKPhysicsContactDelegate {
         addChild(player!)
     }
 
+    func destroyPlayer() {
+        let ex:SKEmitterNode = Explosion.generate()
+        ex.xScale = 0.3
+        ex.yScale = 0.3
+        ex.position = player!.position
+        addChild(ex)
+        let fadeOutAction = SKAction.fadeOutWithDuration(0.5)
+        let removeAction = SKAction.removeFromParent()
+        let sequence = [fadeOutAction, removeAction]
+        ex.runAction(SKAction.sequence(sequence))
+    }
+
     func setupEnemy() {
         let enemy:Enemy = Enemy.generateRandomly()
         while (true) {
@@ -58,7 +70,21 @@ class Stage: SKScene, SKPhysicsContactDelegate {
 
     func overflow() {
         timer!.invalidate()
-        close!.onClose()
+        destroyPlayer()
+
+        let text:SKLabelNode = SKLabelNode()
+        text.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Center
+        text.position = CGPoint(x: size.width / 2, y: size.height / 2)
+        text.zPosition = 1000000002
+        text.text = "Game Overflow"
+        text.alpha = 0
+        addChild(text)
+        let fadeInAction = SKAction.fadeInWithDuration(5)
+        let sequence = [fadeInAction]
+        text.runAction(SKAction.sequence(sequence))
+        
+        
+//        close!.onClose()
     }
 
     override func didMoveToView(view: SKView) {

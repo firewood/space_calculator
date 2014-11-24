@@ -25,7 +25,6 @@ class Computation {
         background!.zPosition = 1000000000
         stage.addChild(background!)
 
-//        text = SKLabelNode(text: getCurrentText())
         text = SKLabelNode()
         text!.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Right
         text!.position = CGPoint(x: stage.size.width - 10, y: stage.size.height - 50)

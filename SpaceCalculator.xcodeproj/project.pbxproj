@@ -21,6 +21,9 @@
 		20041D261A18DDC300D390BD /* PlusEnemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20041D251A18DDC300D390BD /* PlusEnemy.swift */; };
 		20041D281A18FDAD00D390BD /* Computation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20041D271A18FDAD00D390BD /* Computation.swift */; };
 		2015EB241A1E38D100CDCF3F /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2015EB231A1E38D100CDCF3F /* Calculator.swift */; };
+		203FB2DF1A22DA9A00DFF0D3 /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 203FB2DE1A22DA9A00DFF0D3 /* Logo.png */; };
+		203FB2E11A22E1D200DFF0D3 /* Debug.png in Resources */ = {isa = PBXBuildFile; fileRef = 203FB2E01A22E1D200DFF0D3 /* Debug.png */; };
+		20772A3B1A224925002095FE /* Explosion.m in Sources */ = {isa = PBXBuildFile; fileRef = 20772A3A1A224925002095FE /* Explosion.m */; };
 		20C9CECC1A21B52E00FC947A /* button0.png in Resources */ = {isa = PBXBuildFile; fileRef = 20C9CEBB1A21B52E00FC947A /* button0.png */; };
 		20C9CECD1A21B52E00FC947A /* button1.png in Resources */ = {isa = PBXBuildFile; fileRef = 20C9CEBC1A21B52E00FC947A /* button1.png */; };
 		20C9CECE1A21B52E00FC947A /* button2.png in Resources */ = {isa = PBXBuildFile; fileRef = 20C9CEBD1A21B52E00FC947A /* button2.png */; };
@@ -41,6 +44,8 @@
 		20C9CEDE1A2223C000FC947A /* bullet.png in Resources */ = {isa = PBXBuildFile; fileRef = 20C9CEDD1A2223C000FC947A /* bullet.png */; };
 		20C9CEE01A222CF200FC947A /* buttonClear.png in Resources */ = {isa = PBXBuildFile; fileRef = 20C9CEDF1A222CF200FC947A /* buttonClear.png */; };
 		20C9CEE21A222DD500FC947A /* ClearEnemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C9CEE11A222DD500FC947A /* ClearEnemy.swift */; };
+		20C9CEE51A22460000FC947A /* Explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 20C9CEE31A22460000FC947A /* Explosion.sks */; };
+		20C9CEE61A22460000FC947A /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 20C9CEE41A22460000FC947A /* spark.png */; };
 		20CC18F21A20C1AD00AA35A1 /* DebugStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CC18F11A20C1AD00AA35A1 /* DebugStage.swift */; };
 		20CFA5231A1AEA9600B7C489 /* DivEnemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CFA5201A1AEA9600B7C489 /* DivEnemy.swift */; };
 		20CFA5241A1AEA9600B7C489 /* MinusEnemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CFA5211A1AEA9600B7C489 /* MinusEnemy.swift */; };
@@ -77,6 +82,11 @@
 		20041D251A18DDC300D390BD /* PlusEnemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlusEnemy.swift; sourceTree = "<group>"; };
 		20041D271A18FDAD00D390BD /* Computation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Computation.swift; sourceTree = "<group>"; };
 		2015EB231A1E38D100CDCF3F /* Calculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
+		203FB2DE1A22DA9A00DFF0D3 /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
+		203FB2E01A22E1D200DFF0D3 /* Debug.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Debug.png; sourceTree = "<group>"; };
+		20772A391A224925002095FE /* SpaceCalculator-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpaceCalculator-Bridging-Header.h"; sourceTree = "<group>"; };
+		20772A3A1A224925002095FE /* Explosion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Explosion.m; sourceTree = "<group>"; };
+		20772A3C1A224AC6002095FE /* Explosion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Explosion.h; sourceTree = "<group>"; };
 		20C9CEBB1A21B52E00FC947A /* button0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button0.png; sourceTree = "<group>"; };
 		20C9CEBC1A21B52E00FC947A /* button1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button1.png; sourceTree = "<group>"; };
 		20C9CEBD1A21B52E00FC947A /* button2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button2.png; sourceTree = "<group>"; };
@@ -97,6 +107,8 @@
 		20C9CEDD1A2223C000FC947A /* bullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bullet.png; sourceTree = "<group>"; };
 		20C9CEDF1A222CF200FC947A /* buttonClear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonClear.png; sourceTree = "<group>"; };
 		20C9CEE11A222DD500FC947A /* ClearEnemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClearEnemy.swift; sourceTree = "<group>"; };
+		20C9CEE31A22460000FC947A /* Explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Explosion.sks; sourceTree = "<group>"; };
+		20C9CEE41A22460000FC947A /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		20CC18F11A20C1AD00AA35A1 /* DebugStage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugStage.swift; sourceTree = "<group>"; };
 		20CFA5201A1AEA9600B7C489 /* DivEnemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DivEnemy.swift; sourceTree = "<group>"; };
 		20CFA5211A1AEA9600B7C489 /* MinusEnemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinusEnemy.swift; sourceTree = "<group>"; };
@@ -147,6 +159,8 @@
 				20041CA81A16606A00D390BD /* AppDelegate.swift */,
 				20041CAA1A16606A00D390BD /* ViewController.swift */,
 				20041CC81A1665DE00D390BD /* Stage.swift */,
+				20772A3A1A224925002095FE /* Explosion.m */,
+				20772A3C1A224AC6002095FE /* Explosion.h */,
 				20CC18F11A20C1AD00AA35A1 /* DebugStage.swift */,
 				20041D1F1A18C3CF00D390BD /* Player.swift */,
 				20041D1D1A1895F100D390BD /* Bullet.swift */,
@@ -160,10 +174,13 @@
 				20CFA5221A1AEA9600B7C489 /* MulEnemy.swift */,
 				20CFA5201A1AEA9600B7C489 /* DivEnemy.swift */,
 				20CFA5261A1B517A00B7C489 /* EqualEnemy.swift */,
+				20C9CEE31A22460000FC947A /* Explosion.sks */,
+				20C9CEE41A22460000FC947A /* spark.png */,
 				20041CAC1A16606A00D390BD /* Main.storyboard */,
 				20041CAF1A16606A00D390BD /* Images.xcassets */,
 				20041CB11A16606A00D390BD /* LaunchScreen.xib */,
 				20041CA61A16606A00D390BD /* Supporting Files */,
+				20772A391A224925002095FE /* SpaceCalculator-Bridging-Header.h */,
 			);
 			path = SpaceCalculator;
 			sourceTree = "<group>";
@@ -196,6 +213,7 @@
 		20C9CEBA1A21B52E00FC947A /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				203FB2DE1A22DA9A00DFF0D3 /* Logo.png */,
 				20C9CEDD1A2223C000FC947A /* bullet.png */,
 				20C9CEBB1A21B52E00FC947A /* button0.png */,
 				20C9CEBC1A21B52E00FC947A /* button1.png */,
@@ -215,6 +233,7 @@
 				20C9CEC91A21B52E00FC947A /* buttonPlus.png */,
 				20C9CECA1A21B52E00FC947A /* ladybug.gif */,
 				20C9CECB1A21B52E00FC947A /* Spaceship.png */,
+				203FB2E01A22E1D200DFF0D3 /* Debug.png */,
 			);
 			name = Images;
 			path = images;
@@ -302,16 +321,19 @@
 			files = (
 				20C9CEDC1A21B52E00FC947A /* Spaceship.png in Resources */,
 				20C9CEDE1A2223C000FC947A /* bullet.png in Resources */,
+				20C9CEE51A22460000FC947A /* Explosion.sks in Resources */,
 				20041CAE1A16606A00D390BD /* Main.storyboard in Resources */,
 				20C9CED71A21B52E00FC947A /* buttonEqual.png in Resources */,
 				20C9CED31A21B52E00FC947A /* button7.png in Resources */,
 				20C9CED41A21B52E00FC947A /* button8.png in Resources */,
 				20041CB31A16606A00D390BD /* LaunchScreen.xib in Resources */,
 				20C9CEDA1A21B52E00FC947A /* buttonPlus.png in Resources */,
+				203FB2E11A22E1D200DFF0D3 /* Debug.png in Resources */,
 				20C9CED11A21B52E00FC947A /* button5.png in Resources */,
 				20C9CECF1A21B52E00FC947A /* button3.png in Resources */,
 				20C9CECE1A21B52E00FC947A /* button2.png in Resources */,
 				20C9CECC1A21B52E00FC947A /* button0.png in Resources */,
+				20C9CEE61A22460000FC947A /* spark.png in Resources */,
 				20C9CECD1A21B52E00FC947A /* button1.png in Resources */,
 				20C9CED81A21B52E00FC947A /* buttonMinus.png in Resources */,
 				20C9CED51A21B52E00FC947A /* button9.png in Resources */,
@@ -320,6 +342,7 @@
 				20C9CEDB1A21B52E00FC947A /* ladybug.gif in Resources */,
 				20C9CED21A21B52E00FC947A /* button6.png in Resources */,
 				20C9CEE01A222CF200FC947A /* buttonClear.png in Resources */,
+				203FB2DF1A22DA9A00DFF0D3 /* Logo.png in Resources */,
 				20C9CED91A21B52E00FC947A /* buttonMul.png in Resources */,
 				20041CB01A16606A00D390BD /* Images.xcassets in Resources */,
 			);
@@ -351,6 +374,7 @@
 				20041D261A18DDC300D390BD /* PlusEnemy.swift in Sources */,
 				20041CA91A16606A00D390BD /* AppDelegate.swift in Sources */,
 				2015EB241A1E38D100CDCF3F /* Calculator.swift in Sources */,
+				20772A3B1A224925002095FE /* Explosion.m in Sources */,
 				20CFA5241A1AEA9600B7C489 /* MinusEnemy.swift in Sources */,
 				20041D201A18C3CF00D390BD /* Player.swift in Sources */,
 				20CFA5271A1B517A00B7C489 /* EqualEnemy.swift in Sources */,
@@ -477,10 +501,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = SpaceCalculator/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SpaceCalculator/SpaceCalculator-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -488,10 +515,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = SpaceCalculator/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SpaceCalculator/SpaceCalculator-Bridging-Header.h";
 			};
 			name = Release;
 		};

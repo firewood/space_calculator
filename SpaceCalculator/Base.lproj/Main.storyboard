@@ -24,9 +24,12 @@
                                     <action selector="didTapStartButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ITp-j2-gNK"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="3JB-hs-PtY">
+                                <rect key="frame" x="0.0" y="115" width="320" height="179"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2y7-T2-eBp">
-                                <rect key="frame" x="259" y="0.0" width="61" height="50"/>
-                                <state key="normal" title="Button" image="ladybug.gif">
+                                <rect key="frame" x="240" y="7" width="80" height="100"/>
+                                <state key="normal" title="Button" image="Debug.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -47,7 +50,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ladybug.gif" width="250" height="250"/>
+        <image name="Debug.png" width="512" height="640"/>
+        <image name="Logo.png" width="578" height="289"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

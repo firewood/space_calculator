@@ -17,7 +17,6 @@ class ViewController: UIViewController, CloseProtocol {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
 
     override func didReceiveMemoryWarning() {
