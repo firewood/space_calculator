@@ -19,6 +19,7 @@ class Calculator {
         lastOp = []
     }
 
+    // evaluate reverse polish notation
     class func evaluatePostfix(initialValue:Double, rpn:[String]) ->Double {
         var stack:[Double] = [initialValue]
         func ALU(f:((Double, Double) -> Double)) -> Double {
@@ -55,6 +56,7 @@ class Calculator {
         return stack.last!
     }
 
+    // convert infix notation to reverse polish notation
     class func infixToPostfix(commands:[String]) -> [String] {
         var result:[String] = []
         var op:[String] = []
@@ -79,6 +81,7 @@ class Calculator {
         return result
     }
 
+    // convert string to infix notation
     class func stringToInfix(commands:String) -> [String] {
         var n:String = ""
         var result:[String] = []
@@ -101,6 +104,7 @@ class Calculator {
         return result
     }
 
+    // evaluate infix notation queue
     func execute() -> Double {
         var rpnQueue:[String] = []
 
@@ -124,6 +128,7 @@ class Calculator {
         return currentValue
     }
 
+    // evaluate string
     func execute(commands:String) -> Double {
         infixQueue = Calculator.stringToInfix(commands)
         println("infixQueue: \(infixQueue)")

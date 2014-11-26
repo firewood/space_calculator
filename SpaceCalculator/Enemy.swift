@@ -53,6 +53,7 @@ class Enemy: SKSpriteNode {
         physicsBody!.velocity = CGVectorMake(0, -150)
         physicsBody!.categoryBitMask = enemyCategory
 
+        // delete after 10 seconds
         let waitAction = SKAction.waitForDuration(10)
         let removeAction = SKAction.removeFromParent()
         let sequence = [waitAction, removeAction]

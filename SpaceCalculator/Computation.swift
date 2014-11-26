@@ -8,11 +8,11 @@
 
 import SpriteKit
 
+// score board class
 class Computation {
-    var calc:Calculator = Calculator()
-//    var queue:[String] = []
-    var currentValue:Double = 0
-    var isFirst:Bool = true
+    var calc:Calculator = Calculator()      // calculator
+    var currentValue:Double = 0             // current score
+    var isFirst:Bool = true                 // first character is entered
     var mathOp:String = ""
     var background:SKSpriteNode?
     var text:SKLabelNode?
@@ -33,7 +33,9 @@ class Computation {
         updateText()
     }
 
+    // stringify current score
     func getCurrentText() -> String {
+        // 0 or infinity
         switch (currentValue) {
         case 0:
             return "0"
@@ -47,10 +49,13 @@ class Computation {
             break
         }
 
+        // too big or too small
         if (fabs(currentValue) >= 1.0E+14 || fabs(currentValue) < 1.0E-12) {
             return String(format: "%.10E", currentValue)
         }
 
+        // others
+        // strip trailing zeros
         var s:String = String(format: "%.12lf", currentValue)
         while (s.hasSuffix("0")) {
             s.removeAtIndex(s.endIndex.predecessor())
@@ -65,6 +70,7 @@ class Computation {
         text!.text = getCurrentText()
     }
 
+    // emit one character and update
     func press(command:String) {
         println("queue: \(calc.infixQueue), result: \(currentValue), add: \(command)")
 
@@ -75,25 +81,34 @@ class Computation {
             isFirst = true
             mathOp = ""
         case "+", "-":
+            // if no digits are given, current value will be used for calculation
             if (!isFirst) {
                 calc.infixQueue.append(String(getCurrentText()))
+                // calculate whole expressions because other expressions have higher priority
                 currentValue = calc.execute()
             }
             isFirst = true
             mathOp = command
-        case "+", "-", "*", "/":
+        case "*", "/":
             if (!isFirst) {
-                calc.currentValue = currentValue
                 calc.infixQueue.append(String(getCurrentText()))
+                // Update calc's implicit operand to get 64 from "8*=".
+                // Do not calculate whole expressions to conform regular calculator's behavior.
+                // FIXME: overflow detection
+                calc.currentValue = currentValue
             }
             isFirst = true
             mathOp = command
         case "=":
             if (!isFirst) {
+                // Flush the operand buffer
                 calc.infixQueue.append(String(getCurrentText()))
             }
             if (!mathOp.isEmpty) {
+                // Last operand is not given explicitly.
+                // Flush the arithmetic operator buffer.
                 calc.infixQueue.append(mathOp)
+                // Previous value will be implicit operand.
                 calc.infixQueue.append(String(getCurrentText()))
             }
 
