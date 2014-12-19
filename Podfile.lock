@@ -1,0 +1,10 @@
+PODS:
+  - Repro (0.3.7)
+
+DEPENDENCIES:
+  - Repro
+
+SPEC CHECKSUMS:
+  Repro: 0dca34be91cc0faaf1668c3b3c65b9e3a17489fd
+
+COCOAPODS: 0.35.0

@@ -15,6 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         srand(UInt32(time(nil)))
+
+        Repro.setup("1d6060c8-5ece-47e5-a578-59574f261800");
+        Repro.startRecording()
+
         return true
     }
 
