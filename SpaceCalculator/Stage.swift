@@ -65,7 +65,7 @@ class Stage: SKScene, SKPhysicsContactDelegate {
     // generate explosion effect
     func setupExplosion(position:CGPoint, scale:CGFloat, duration:NSTimeInterval) {
         // alternative to SKEmitterNode:filenamed
-        let ex:SKEmitterNode = NSKeyedUnarchiver.unarchiveObjectWithFile(NSBundle.mainBundle().pathForResource("Explosion", ofType: "sks")!) as SKEmitterNode
+        let ex:SKEmitterNode = NSKeyedUnarchiver.unarchiveObjectWithFile(NSBundle.mainBundle().pathForResource("Explosion", ofType: "sks")!) as! SKEmitterNode
         ex.xScale = scale
         ex.yScale = scale
         ex.position = position
@@ -129,7 +129,7 @@ class Stage: SKScene, SKPhysicsContactDelegate {
     }
 
     // touch start
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         if (!isPlaying) {
             return      // game is over
         }
@@ -140,14 +140,14 @@ class Stage: SKScene, SKPhysicsContactDelegate {
         for touch: AnyObject in touches {
             let location = touch.locationInNode(self)
             let node:SKNode? = nodeAtPoint(location)
-            if (node? == player!) {
+            if (node == player!) {
                 // start moving
                 isPlayerMoving = true
             }
         }
     }
 
-    override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
+    override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
         if (!isPlaying || !isPlayerMoving) {
             return
         }
@@ -161,7 +161,7 @@ class Stage: SKScene, SKPhysicsContactDelegate {
         }
     }
 
-    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
+    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
         if (!isPlaying) {
             if (nextEnemy <= 0) {
                 // free resources and close
@@ -197,7 +197,7 @@ class Stage: SKScene, SKPhysicsContactDelegate {
             pBody.node!.removeFromParent()
 
             // send enemy command to score board
-            let command:String = (eBody.node as Enemy).getValue()
+            let command:String = (eBody.node as! Enemy).getValue()
             computation!.press(command)
             destroyEnemy(eBody.node!)
             if (command == "C") {

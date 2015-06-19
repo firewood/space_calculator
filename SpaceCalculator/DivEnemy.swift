@@ -8,7 +8,7 @@
 
 class DivEnemy: Enemy {
 
-    convenience override init() {
+    convenience init() {
         self.init(name: "Div")
     }
 

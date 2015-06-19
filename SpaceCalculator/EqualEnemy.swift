@@ -8,7 +8,7 @@
 
 class EqualEnemy: Enemy {
 
-    convenience override init() {
+    convenience init() {
         self.init(name: "Equal")
     }
 

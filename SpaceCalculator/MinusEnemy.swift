@@ -8,7 +8,7 @@
 
 class MinusEnemy: Enemy {
 
-    convenience override init() {
+    convenience init() {
         self.init(name: "Minus")
     }
 
