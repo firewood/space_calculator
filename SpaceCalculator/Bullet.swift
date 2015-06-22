@@ -10,7 +10,7 @@ import SpriteKit
 
 class Bullet: SKSpriteNode {
 
-    convenience override init() {
+    convenience init() {
         self.init(imageNamed: "bullet")
         setScale(0.04)
         physicsBody = SKPhysicsBody(rectangleOfSize: size)

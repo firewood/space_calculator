@@ -8,7 +8,7 @@
 
 class MulEnemy: Enemy {
 
-    convenience override init() {
+    convenience init() {
         self.init(name: "Mul")
     }
 

@@ -8,7 +8,7 @@
 
 class ClearEnemy: Enemy {
 
-    convenience override init() {
+    convenience init() {
         self.init(name: "Clear")
     }
 

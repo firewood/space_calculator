@@ -37,12 +37,12 @@ class DebugStage: SKScene {
         }
     }
 
-    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
+    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
         for touch: AnyObject in touches {
             let location = touch.locationInNode(self)
             let node:SKNode? = nodeAtPoint(location)
             if (node != nil && node!.isKindOfClass(Enemy)) {
-                var command:String = (node! as Enemy).getValue()
+                var command:String = (node! as! Enemy).getValue()
                 computation!.press(command)
             }
         }

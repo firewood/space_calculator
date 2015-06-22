@@ -86,7 +86,7 @@ class Calculator {
         var n:String = ""
         var result:[String] = []
         func flush_number() {
-            if (n.utf16Count > 0) {
+            if (count(n.utf16) > 0) {
                 result.append(n)
                 n = ""
             }

@@ -10,7 +10,7 @@ import SpriteKit
 
 class Player: SKSpriteNode {
 
-    convenience override init() {
+    convenience init() {
         self.init(imageNamed: "Spaceship")
         setScale(0.15)
         physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: self.size.width*0.6, height: self.size.height*0.75))
