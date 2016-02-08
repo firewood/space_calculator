@@ -26,9 +26,9 @@ class Calculator {
             if (stack.count < 2) {
                 stack.append(stack.first!)
             }
-            var a:Double = stack.last!
+            let a:Double = stack.last!
             stack.removeLast()
-            var b:Double = stack.last!
+            let b:Double = stack.last!
             stack.removeLast()
             if (a == Double.infinity || b == Double.infinity) {
                 return Double.infinity
@@ -86,12 +86,12 @@ class Calculator {
         var n:String = ""
         var result:[String] = []
         func flush_number() {
-            if (count(n.utf16) > 0) {
+            if (n.utf16.count > 0) {
                 result.append(n)
                 n = ""
             }
         }
-        for c in commands {
+        for c in commands.characters {
             switch (c) {
             case "+","-","*","/":
                 flush_number()
@@ -108,12 +108,12 @@ class Calculator {
     func execute() -> Double {
         var rpnQueue:[String] = []
 
-        println("EXEC")
-        println("  queue: \(infixQueue)")
+        print("EXEC")
+        print("  queue: \(infixQueue)")
 
         switch (infixQueue.count) {
         case 0:
-            println("  last op: \(lastOp)")
+            print("  last op: \(lastOp)")
             rpnQueue = Calculator.infixToPostfix(lastOp)
         case 1:
             lastOp = [infixQueue.last!]
@@ -123,7 +123,7 @@ class Calculator {
             rpnQueue = Calculator.infixToPostfix(infixQueue)
         }
 
-        println("  rpnQueue: \(rpnQueue)")
+        print("  rpnQueue: \(rpnQueue)")
         currentValue = Calculator.evaluatePostfix(currentValue, rpn:rpnQueue)
         return currentValue
     }
@@ -131,7 +131,7 @@ class Calculator {
     // evaluate string
     func execute(commands:String) -> Double {
         infixQueue = Calculator.stringToInfix(commands)
-        println("infixQueue: \(infixQueue)")
+        print("infixQueue: \(infixQueue)")
         return execute()
     }
 

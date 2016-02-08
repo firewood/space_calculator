@@ -72,7 +72,7 @@ class Computation {
 
     // emit one character and update
     func press(command:String) {
-        println("queue: \(calc.infixQueue), result: \(currentValue), add: \(command)")
+        print("queue: \(calc.infixQueue), result: \(currentValue), add: \(command)")
 
         switch (command) {
         case "C":

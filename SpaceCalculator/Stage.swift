@@ -31,7 +31,7 @@ class Stage: SKScene, SKPhysicsContactDelegate {
     var previousEnemyLeft:CGFloat = 0
 
     deinit {
-        println("Stage destroyed")
+        print("Stage destroyed")
     }
 
     func setupComputation() {
@@ -129,7 +129,7 @@ class Stage: SKScene, SKPhysicsContactDelegate {
     }
 
     // touch start
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         if (!isPlaying) {
             return      // game is over
         }
@@ -147,7 +147,7 @@ class Stage: SKScene, SKPhysicsContactDelegate {
         }
     }
 
-    override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
         if (!isPlaying || !isPlayerMoving) {
             return
         }
@@ -161,7 +161,7 @@ class Stage: SKScene, SKPhysicsContactDelegate {
         }
     }
 
-    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         if (!isPlaying) {
             if (nextEnemy <= 0) {
                 // free resources and close
@@ -189,7 +189,7 @@ class Stage: SKScene, SKPhysicsContactDelegate {
             swap(&pBody, &eBody)
         }
         if (pBody.categoryBitMask == playerCategory) {
-            println("Player hit")
+            print("Player hit")
             overflow()
         }
         if (pBody.categoryBitMask == bulletCategory) {

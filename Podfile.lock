@@ -1,10 +1,10 @@
 PODS:
-  - Repro (0.9.8)
+  - Repro (1.4.22)
 
 DEPENDENCIES:
   - Repro
 
 SPEC CHECKSUMS:
-  Repro: e16b4e41308012ba7156ed9e4b20bb134e8ac071
+  Repro: 55dbb0144d5fefc89e635c27a67d845658dfd3d5
 
-COCOAPODS: 0.37.2
+COCOAPODS: 0.39.0
