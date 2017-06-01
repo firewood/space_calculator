@@ -12,7 +12,7 @@ class DebugStage: SKScene {
     var close: CloseProtocol?
     var computation: Computation?
 
-    override func didMoveToView(view: SKView) {
+    override func didMove(to view: SKView) {
         computation = Computation(stage: self)
 
         var enemies:[Enemy?] = [
@@ -28,20 +28,20 @@ class DebugStage: SKScene {
         let vertical:CGFloat = 60
         let top:CGFloat = (size.height - computation!.background!.frame.height - CGFloat(vertical) * (5-1)) / 2
 
-        for (var i = 0; i < enemies.count; i++) {
+        for i in 0 ..< enemies.count {
             let enemy:Enemy? = enemies[i]
             if (enemy != nil) {
-                enemy?.position = CGPointMake(CGFloat(i % 4) * horizontal + left, CGFloat(i / 4) * vertical + top)
+                enemy?.position = CGPoint(x: CGFloat(i % 4) * horizontal + left, y: CGFloat(i / 4) * vertical + top)
                 addChild(enemy!)
             }
         }
     }
 
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch: AnyObject in touches {
-            let location = touch.locationInNode(self)
-            let node:SKNode? = nodeAtPoint(location)
-            if (node != nil && node!.isKindOfClass(Enemy)) {
+            let location = touch.location(in: self)
+            let node:SKNode? = atPoint(location)
+            if (node != nil && node!.isKind(of: Enemy.self)) {
                 let command:String = (node! as! Enemy).getValue()
                 computation!.press(command)
             }

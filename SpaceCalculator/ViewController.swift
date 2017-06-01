@@ -23,21 +23,21 @@ class ViewController: UIViewController, CloseProtocol {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func didTapStartButton(sender: AnyObject) {
+    @IBAction func didTapStartButton(_ sender: AnyObject) {
         // start a new game
         let s = Stage(size: view.frame.size)
         s.close = self
-        s.scaleMode = SKSceneScaleMode.AspectFill
+        s.scaleMode = SKSceneScaleMode.aspectFill
         skView = SKView(frame: view.frame)
         skView!.presentScene(s)
         view.addSubview(skView!)
     }
 
-    @IBAction func didTapDebugButton(sender: AnyObject) {
+    @IBAction func didTapDebugButton(_ sender: AnyObject) {
         // show debug console :)
         let s = DebugStage(size: view.frame.size)
         s.close = self
-        s.scaleMode = SKSceneScaleMode.AspectFill
+        s.scaleMode = SKSceneScaleMode.aspectFill
         skView = SKView(frame: view.frame)
         skView!.presentScene(s)
         view.addSubview(skView!)

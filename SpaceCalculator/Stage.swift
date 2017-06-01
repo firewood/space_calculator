@@ -23,7 +23,7 @@ class Stage: SKScene, SKPhysicsContactDelegate {
     var close: CloseProtocol?
     var computation: Computation?       // score board
     var player: Player?
-    var timer:NSTimer?
+    var timer:Timer?
     var isPlaying:Bool = true
     var isPlayerMoving: Bool = false
     var playerMovedDistance: Float = 0
@@ -41,7 +41,7 @@ class Stage: SKScene, SKPhysicsContactDelegate {
 
     func setupPlayer() {
         player = Player()
-        player!.position = CGPointMake(CGRectGetMidX(frame), 30.0);
+        player!.position = CGPoint(x: frame.midX, y: 30.0);
         addChild(player!)
     }
 
@@ -52,7 +52,7 @@ class Stage: SKScene, SKPhysicsContactDelegate {
             // keep new enemy away from previous one
             let left:CGFloat = CGFloat(arc4random_uniform(UInt32(size.width - enemy.size.width))) + enemy.size.width / 2
             if (fabs(previousEnemyLeft - left) >= 120) {
-                enemy.position = CGPointMake(left, size.height)
+                enemy.position = CGPoint(x: left, y: size.height)
                 enemy.fall()
                 addChild(enemy)
                 previousEnemyLeft = left
@@ -63,17 +63,17 @@ class Stage: SKScene, SKPhysicsContactDelegate {
     }
 
     // generate explosion effect
-    func setupExplosion(position:CGPoint, scale:CGFloat, duration:NSTimeInterval) {
+    func setupExplosion(_ position:CGPoint, scale:CGFloat, duration:TimeInterval) {
         // alternative to SKEmitterNode:filenamed
-        let ex:SKEmitterNode = NSKeyedUnarchiver.unarchiveObjectWithFile(NSBundle.mainBundle().pathForResource("Explosion", ofType: "sks")!) as! SKEmitterNode
+        let ex:SKEmitterNode = NSKeyedUnarchiver.unarchiveObject(withFile: Bundle.main.path(forResource: "Explosion", ofType: "sks")!) as! SKEmitterNode
         ex.xScale = scale
         ex.yScale = scale
         ex.position = position
         addChild(ex)
-        let fadeOutAction = SKAction.fadeOutWithDuration(duration)
+        let fadeOutAction = SKAction.fadeOut(withDuration: duration)
         let removeAction = SKAction.removeFromParent()
         let sequence = [fadeOutAction, removeAction]
-        ex.runAction(SKAction.sequence(sequence))
+        ex.run(SKAction.sequence(sequence))
     }
 
     // burn the player
@@ -84,23 +84,23 @@ class Stage: SKScene, SKPhysicsContactDelegate {
     }
 
     // burn the enemy
-    func destroyEnemy(enemy:SKNode) {
+    func destroyEnemy(_ enemy:SKNode) {
         setupExplosion(enemy.position, scale: 0.2, duration: 0.3)
         enemy.removeFromParent()
     }
 
     // show result banner
-    func banner(s:String) {
+    func banner(_ s:String) {
         let text:SKLabelNode = SKLabelNode()
-        text.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Center
+        text.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.center
         text.position = CGPoint(x: size.width / 2, y: size.height / 2)
         text.zPosition = 1000000002
         text.text = s
         text.alpha = 0
         addChild(text)
-        let fadeInAction = SKAction.fadeInWithDuration(5)
+        let fadeInAction = SKAction.fadeIn(withDuration: 5)
         let sequence = [fadeInAction]
-        text.runAction(SKAction.sequence(sequence))
+        text.run(SKAction.sequence(sequence))
         nextEnemy = 2       // guard timer
     }
 
@@ -120,16 +120,16 @@ class Stage: SKScene, SKPhysicsContactDelegate {
     }
 
     // initialization
-    override func didMoveToView(view: SKView) {
+    override func didMove(to view: SKView) {
         setupComputation()
         setupPlayer()
         setupEnemy()
-        timer = NSTimer.scheduledTimerWithTimeInterval(timerInterval, target: self, selector: "onTimer", userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: timerInterval, target: self, selector: #selector(Stage.onTimer), userInfo: nil, repeats: true)
         self.physicsWorld.contactDelegate = self
     }
 
     // touch start
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if (!isPlaying) {
             return      // game is over
         }
@@ -138,8 +138,8 @@ class Stage: SKScene, SKPhysicsContactDelegate {
         playerMovedDistance = 0
 
         for touch: AnyObject in touches {
-            let location = touch.locationInNode(self)
-            let node:SKNode? = nodeAtPoint(location)
+            let location = touch.location(in: self)
+            let node:SKNode? = atPoint(location)
             if (node == player!) {
                 // start moving
                 isPlayerMoving = true
@@ -147,21 +147,21 @@ class Stage: SKScene, SKPhysicsContactDelegate {
         }
     }
 
-    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         if (!isPlaying || !isPlayerMoving) {
             return
         }
 
         // player is in dragging
         for touch: AnyObject in touches {
-            let location = touch.locationInNode(self)
+            let location = touch.location(in: self)
             let diff: Float = Float(location.x - player!.position.x)
             player!.position.x = location.x
             playerMovedDistance += fabsf(diff)
         }
     }
 
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if (!isPlaying) {
             if (nextEnemy <= 0) {
                 // free resources and close
@@ -174,13 +174,13 @@ class Stage: SKScene, SKPhysicsContactDelegate {
         // fire by tap
         if (isPlaying && playerMovedDistance <= 4.0) {
             let bullet = Bullet()
-            bullet.position = CGPointMake(player!.position.x, 45.0);
+            bullet.position = CGPoint(x: player!.position.x, y: 45.0);
             addChild(bullet)
         }
     }
 
     // collision handling
-    func didBeginContact(contact: SKPhysicsContact!) {
+    func didBegin(_ contact: SKPhysicsContact!) {
         var pBody, eBody: SKPhysicsBody
         pBody = contact.bodyA
         eBody = contact.bodyB

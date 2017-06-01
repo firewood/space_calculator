@@ -18,7 +18,7 @@ class Computation {
     var text:SKLabelNode?
 
     init(stage: SKScene) {
-        background = SKSpriteNode(color: SKColor.grayColor(), size: CGSize(width: stage.size.width, height: 60))
+        background = SKSpriteNode(color: SKColor.gray, size: CGSize(width: stage.size.width, height: 60))
         background!.anchorPoint.x = 0
         background!.anchorPoint.y = 0
         background!.position = CGPoint(x: 0, y: stage.size.height - 60)
@@ -26,7 +26,7 @@ class Computation {
         stage.addChild(background!)
 
         text = SKLabelNode()
-        text!.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Right
+        text!.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.right
         text!.position = CGPoint(x: stage.size.width - 10, y: stage.size.height - 50)
         text!.zPosition = 1000000001
         stage.addChild(text!)
@@ -43,7 +43,7 @@ class Computation {
             return "∞"
         case -Double.infinity:
             return "-∞"
-        case Double.NaN:
+        case Double.nan:
             return "NaN"
         default:
             break
@@ -58,10 +58,10 @@ class Computation {
         // strip trailing zeros
         var s:String = String(format: "%.12lf", currentValue)
         while (s.hasSuffix("0")) {
-            s.removeAtIndex(s.endIndex.predecessor())
+            s.remove(at: s.characters.index(before: s.endIndex))
         }
         if (s.hasSuffix(".")) {
-            s.removeAtIndex(s.endIndex.predecessor())
+            s.remove(at: s.characters.index(before: s.endIndex))
         }
         return s
     }
@@ -71,7 +71,7 @@ class Computation {
     }
 
     // emit one character and update
-    func press(command:String) {
+    func press(_ command:String) {
         print("queue: \(calc.infixQueue), result: \(currentValue), add: \(command)")
 
         switch (command) {

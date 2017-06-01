@@ -13,9 +13,9 @@ class Bullet: SKSpriteNode {
     convenience init() {
         self.init(imageNamed: "bullet")
         setScale(0.04)
-        physicsBody = SKPhysicsBody(rectangleOfSize: size)
+        physicsBody = SKPhysicsBody(rectangleOf: size)
         physicsBody!.affectedByGravity = false
-        physicsBody?.velocity = CGVectorMake(0, 500)
+        physicsBody?.velocity = CGVector(dx: 0, dy: 500)
         physicsBody!.categoryBitMask = bulletCategory
         physicsBody!.contactTestBitMask = enemyCategory
         physicsBody!.collisionBitMask = enemyCategory

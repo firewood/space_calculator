@@ -9,7 +9,7 @@
 import SpriteKit
 
 enum MathOperator {
-    case Digit, Plus, Minus, Mul, Div, Equal
+    case digit, plus, minus, mul, div, equal
 }
 
 class Enemy: SKSpriteNode {
@@ -48,16 +48,16 @@ class Enemy: SKSpriteNode {
     }
 
     func fall() {
-        physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: size.width - 10, height: size.height - 10))
+        physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: size.width - 10, height: size.height - 10))
         physicsBody!.affectedByGravity = false
-        physicsBody!.velocity = CGVectorMake(0, -150)
+        physicsBody!.velocity = CGVector(dx: 0, dy: -150)
         physicsBody!.categoryBitMask = enemyCategory
 
         // delete after 10 seconds
-        let waitAction = SKAction.waitForDuration(10)
+        let waitAction = SKAction.wait(forDuration: 10)
         let removeAction = SKAction.removeFromParent()
         let sequence = [waitAction, removeAction]
-        runAction(SKAction.sequence(sequence))
+        run(SKAction.sequence(sequence))
     }
 
     func getValue() -> String {
