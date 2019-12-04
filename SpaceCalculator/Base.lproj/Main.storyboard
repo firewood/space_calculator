@@ -1,9 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -15,46 +16,46 @@
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TOD-zj-doC">
-                                <rect key="frame" x="40" y="320" width="240" height="80"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2y7-T2-eBp">
+                                <rect key="frame" x="334" y="787" width="60" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="2V6-fs-max"/>
+                                    <constraint firstAttribute="width" constant="60" id="46D-HF-3Go"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="Debug">
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapDebugButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="UoA-7Z-swj"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="gOQ-YP-WIK">
+                                <rect key="frame" x="30" y="54" width="354" height="553"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TOD-zj-doC">
+                                <rect key="frame" x="157" y="657" width="100" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="nDX-b4-lyv"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Tap to Start"/>
                                 <connections>
                                     <action selector="didTapStartButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ITp-j2-gNK"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="3JB-hs-PtY">
-                                <rect key="frame" x="0.0" y="80" width="320" height="179"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="179" id="6ez-mw-ilH"/>
-                                </constraints>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2y7-T2-eBp">
-                                <rect key="frame" x="260" y="493" width="60" height="75"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="75" id="2V6-fs-max"/>
-                                    <constraint firstAttribute="width" constant="60" id="46D-HF-3Go"/>
-                                </constraints>
-                                <state key="normal" title="Button" image="Debug.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="didTapDebugButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="UoA-7Z-swj"/>
-                                </connections>
-                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="TOD-zj-doC" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="40" id="1QZ-eN-mBA"/>
+                            <constraint firstItem="TOD-zj-doC" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="4by-Ly-J3V"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gOQ-YP-WIK" secondAttribute="trailing" constant="10" id="8xK-dJ-8oC"/>
+                            <constraint firstItem="gOQ-YP-WIK" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="10" id="CjG-Yl-3S8"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="2y7-T2-eBp" secondAttribute="bottom" id="G5W-8r-jo0"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="TOD-zj-doC" secondAttribute="trailing" constant="40" id="IYQ-Ob-cEt"/>
-                            <constraint firstItem="3JB-hs-PtY" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-10" id="TKX-sx-f81"/>
-                            <constraint firstItem="TOD-zj-doC" firstAttribute="top" secondItem="3JB-hs-PtY" secondAttribute="bottom" constant="80" id="VCm-eJ-2xd"/>
-                            <constraint firstItem="2y7-T2-eBp" firstAttribute="top" secondItem="TOD-zj-doC" secondAttribute="bottom" constant="80" id="Vi0-qm-ZWG"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="3JB-hs-PtY" secondAttribute="trailing" constant="-10" id="gCy-14-LJx"/>
+                            <constraint firstItem="2y7-T2-eBp" firstAttribute="top" secondItem="TOD-zj-doC" secondAttribute="bottom" constant="50" id="Vi0-qm-ZWG"/>
+                            <constraint firstItem="gOQ-YP-WIK" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="10" id="dcr-Rg-7mo"/>
+                            <constraint firstItem="TOD-zj-doC" firstAttribute="top" secondItem="gOQ-YP-WIK" secondAttribute="bottom" constant="50" id="ecK-dJ-8Gz"/>
                             <constraint firstAttribute="trailingMargin" secondItem="2y7-T2-eBp" secondAttribute="trailing" id="qxt-GC-ec9"/>
                         </constraints>
                     </view>
@@ -65,16 +66,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="360" y="146"/>
+            <point key="canvasLocation" x="521.73913043478262" y="97.767857142857139"/>
         </scene>
     </scenes>
     <resources>
-        <image name="Debug.png" width="512" height="640"/>
-        <image name="Logo.png" width="578" height="289"/>
+        <image name="Debug" width="512" height="640"/>
+        <image name="Logo" width="578" height="289"/>
     </resources>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
 </document>
