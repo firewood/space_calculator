@@ -91,7 +91,7 @@ class Calculator {
                 n = ""
             }
         }
-        for c in commands.characters {
+        for c in commands {
             switch (c) {
             case "+","-","*","/":
                 flush_number()

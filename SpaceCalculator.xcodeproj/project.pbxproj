@@ -24,6 +24,7 @@
 		20454242239801E200CA9985 /* DigitEnemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20454233239801E100CA9985 /* DigitEnemy.swift */; };
 		204542442398042400CA9985 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 204542432398042400CA9985 /* Images.xcassets */; };
 		204542472398045000CA9985 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 204542452398045000CA9985 /* LaunchScreen.xib */; };
+		20454251239959DA00CA9985 /* Explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 20454250239959DA00CA9985 /* Explosion.sks */; };
 		207B31B3237FD34F0036A5A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207B31B2237FD34F0036A5A4 /* AppDelegate.swift */; };
 		207B31BE237FD34F0036A5A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 207B31BC237FD34F0036A5A4 /* Main.storyboard */; };
 		207B31CE237FD3500036A5A4 /* SpaceCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207B31CD237FD3500036A5A4 /* SpaceCalculatorTests.swift */; };
@@ -64,6 +65,7 @@
 		20454233239801E100CA9985 /* DigitEnemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DigitEnemy.swift; sourceTree = "<group>"; };
 		204542432398042400CA9985 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		204542462398045000CA9985 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		20454250239959DA00CA9985 /* Explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Explosion.sks; sourceTree = "<group>"; };
 		207B31AF237FD34F0036A5A4 /* SpaceCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		207B31B2237FD34F0036A5A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		207B31BD237FD34F0036A5A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				207B31B2237FD34F0036A5A4 /* AppDelegate.swift */,
 				207B31BC237FD34F0036A5A4 /* Main.storyboard */,
 				204542452398045000CA9985 /* LaunchScreen.xib */,
+				20454250239959DA00CA9985 /* Explosion.sks */,
 				207B31C4237FD34F0036A5A4 /* Info.plist */,
 			);
 			path = SpaceCalculator;
@@ -259,6 +262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				207B31BE237FD34F0036A5A4 /* Main.storyboard in Resources */,
+				20454251239959DA00CA9985 /* Explosion.sks in Resources */,
 				204542472398045000CA9985 /* LaunchScreen.xib in Resources */,
 				204542442398042400CA9985 /* Images.xcassets in Resources */,
 			);

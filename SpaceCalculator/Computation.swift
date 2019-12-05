@@ -58,10 +58,10 @@ class Computation {
         // strip trailing zeros
         var s:String = String(format: "%.12lf", currentValue)
         while (s.hasSuffix("0")) {
-            s.remove(at: s.characters.index(before: s.endIndex))
+            s.remove(at: s.index(before: s.endIndex))
         }
         if (s.hasSuffix(".")) {
-            s.remove(at: s.characters.index(before: s.endIndex))
+            s.remove(at: s.index(before: s.endIndex))
         }
         return s
     }

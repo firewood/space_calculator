@@ -124,7 +124,7 @@ class Stage: SKScene, SKPhysicsContactDelegate {
         setupComputation()
         setupPlayer()
         setupEnemy()
-        timer = Timer.scheduledTimer(timeInterval: timerInterval, target: self, selector: #selector(Stage.onTimer), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(withTimeInterval: timerInterval, repeats: true, block: { _ in self.onTimer() })
         self.physicsWorld.contactDelegate = self
     }
 
