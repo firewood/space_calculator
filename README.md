@@ -3,8 +3,8 @@ Space Calculator
 
 Requirements
 ------------
-* Xcode 6.1
-* iOS 7.1 or later
+* Xcode 11
+* iOS 11 or later
 
 How to play (Shooting mode)
 ---------------------------
