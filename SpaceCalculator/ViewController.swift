@@ -9,10 +9,9 @@
 import UIKit
 import SpriteKit
 
-class ViewController: UIViewController, CloseProtocol {
+class ViewController: UIViewController {
     @IBOutlet weak var StartButton: UIButton!
     @IBOutlet weak var DebugButton: UIButton!
-    var skView: SKView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,26 +24,19 @@ class ViewController: UIViewController, CloseProtocol {
 
     @IBAction func didTapStartButton(_ sender: AnyObject) {
         // start a new game
-        let s = Stage(size: view.frame.size)
-        s.close = self
-        s.scaleMode = SKSceneScaleMode.aspectFill
-        skView = SKView(frame: view.frame)
-        skView!.presentScene(s)
-        view.addSubview(skView!)
+        showScene(Stage(size: view.frame.size))
     }
 
     @IBAction func didTapDebugButton(_ sender: AnyObject) {
         // show debug console :)
-        let s = DebugStage(size: view.frame.size)
-        s.close = self
-        s.scaleMode = SKSceneScaleMode.aspectFill
-        skView = SKView(frame: view.frame)
-        skView!.presentScene(s)
-        view.addSubview(skView!)
+        showScene(DebugStage(size: view.frame.size))
     }
 
-    func onClose() {
-        skView!.removeFromSuperview()
-        skView = nil
+    func showScene(_ scene: SKScene) {
+        let skView:SKView = SKView(frame: view.frame)
+        skView.ignoresSiblingOrder = true
+        view.addSubview(skView)
+        scene.scaleMode = SKSceneScaleMode.aspectFill
+        skView.presentScene(scene)
     }
 }

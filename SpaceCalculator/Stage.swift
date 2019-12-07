@@ -14,13 +14,7 @@ let enemyCategory: UInt32 = 4
 let timerInterval:Double = 0.5
 let newEnemyInterval:Double = 1.0
 
-// protocol to close scene
-protocol CloseProtocol {
-    func onClose()
-}
-
 class Stage: SKScene, SKPhysicsContactDelegate {
-    var close: CloseProtocol?
     var computation: Computation?       // score board
     var player: Player?
     var timer:Timer?
@@ -51,7 +45,7 @@ class Stage: SKScene, SKPhysicsContactDelegate {
         while (true) {
             // keep new enemy away from previous one
             let left:CGFloat = CGFloat(arc4random_uniform(UInt32(size.width - enemy.size.width))) + enemy.size.width / 2
-            if (fabs(previousEnemyLeft - left) >= 120) {
+            if (abs(previousEnemyLeft - left) >= 120) {
                 enemy.position = CGPoint(x: left, y: size.height)
                 enemy.fall()
                 addChild(enemy)
@@ -166,7 +160,7 @@ class Stage: SKScene, SKPhysicsContactDelegate {
             if (nextEnemy <= 0) {
                 // free resources and close
                 timer!.invalidate()
-                close!.onClose()
+                view?.removeFromSuperview()
             }
             return
         }
@@ -180,7 +174,7 @@ class Stage: SKScene, SKPhysicsContactDelegate {
     }
 
     // collision handling
-    func didBegin(_ contact: SKPhysicsContact!) {
+    func didBegin(_ contact: SKPhysicsContact) {
         var pBody, eBody: SKPhysicsBody
         pBody = contact.bodyA
         eBody = contact.bodyB

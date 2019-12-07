@@ -9,13 +9,12 @@
 import SpriteKit
 
 class DebugStage: SKScene {
-    var close: CloseProtocol?
     var computation: Computation?
 
     override func didMove(to view: SKView) {
         computation = Computation(stage: self)
 
-        var enemies:[Enemy?] = [
+        let enemies:[Enemy?] = [
             DigitEnemy(digit: 0), nil, nil, EqualEnemy(),
             DigitEnemy(digit: 1), DigitEnemy(digit: 2), DigitEnemy(digit: 3), MinusEnemy(),
             DigitEnemy(digit: 4), DigitEnemy(digit: 5), DigitEnemy(digit: 6), PlusEnemy(),
@@ -41,10 +40,13 @@ class DebugStage: SKScene {
         for touch: AnyObject in touches {
             let location = touch.location(in: self)
             let node:SKNode? = atPoint(location)
-            if (node != nil && node!.isKind(of: Enemy.self)) {
-                let command:String = (node! as! Enemy).getValue()
-                computation!.press(command)
+            guard let enemy:Enemy = node! as? Enemy else { return }
+            if (enemy.isKind(of: ClearEnemy.self)) {
+                view?.removeFromSuperview()
+                return
             }
+            let command:String = enemy.getValue()
+            computation!.press(command)
         }
     }
 }
